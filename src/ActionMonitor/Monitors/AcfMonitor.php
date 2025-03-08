@@ -8,30 +8,29 @@ class AcfMonitor extends Monitor {
 
 	public function init() {
 		// ACF Actions
-		add_action(
-			'acf/update_field_group',
-			function() {
-				$this->trigger_schema_diff(
-					[
-						'title' => __( 'Update ACF Field Group', 'WPGatsby' ),
-					]
-				);
-			}
-		);
+		add_action( 'acf/update_field_group', [ $this, 'handle_acf_field_group_change' ] );
+		add_action( 'acf/delete_field_group', [ $this, 'handle_acf_field_group_change' ] );
 
-		add_action(
-			'acf/delete_field_group',
-			function() {
-				$this->trigger_schema_diff(
-					[
-						'title' => __( 'Delete ACF Field Group', 'WPGatsby' ),
-					]
-				);
-			}
-		);
-
-        add_action('acf/save_post', [$this, 'after_acf_save_post'], 20);
+        add_action( 'acf/save_post', [ $this, 'after_acf_save_post' ], 20 );
 	}
+
+    /**
+     * Handles changes to ACF field groups.
+     *
+     * @param string $action The action type ('update' or 'delete').
+     */
+    private function handle_acf_field_group_change( string $action ) {
+		$title = __( 'Update ACF Field Group', 'WPGatsby' );
+		if ( 'delete' === $action ) {
+			$title = __( 'Delete ACF Field Group', 'WPGatsby' );
+		}
+
+		$this->trigger_schema_diff(
+			[
+				'title' => $title,
+			]
+		);
+    }
 
     /**
      * Handles content updates of ACF option pages.

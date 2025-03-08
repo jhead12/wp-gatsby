@@ -1,70 +1,42 @@
-<?php
+/**
+ * Class WPGraphQL_Action_Monitor_User_Meta_Tracking
+ *
+ * Tracks user meta changes and logs actions for Gatsby.
+ */
+class WPGraphQL_Action_Monitor_User_Meta_Tracking {
 
-namespace WPGatsby\ActionMonitor\Monitors;
+	private $action_monitor;
 
-use GraphQLRelay\Relay;
+	// Array to store users before deletion
+	private $users_before_delete = [];
 
-class UserMonitor extends Monitor {
+	// Array to store post IDs that need to be reassigned
+	private $post_ids_to_reassign = [];
 
-	/**
-	 * The user object before deletion
-	 *
-	 * @var array<int, array{user:\WP_User|false, reassign:\WP_User|null}>
-	 */
-	protected $users_before_delete;
-
-	/**
-	 * IDs of posts to reassign
-	 *
-	 * @var array<string>
-	 */
-	protected $post_ids_to_reassign;
-
-	/**
-	 * Initialize UserMonitor Actions
-	 *
-	 * @return void
-	 */
-	public function init() {
-
-		$this->post_ids_to_reassign = [];
-		register_hooks()
-	}
-
-	public function register_hooks() {
-		add_action( 'user_register', [ $this, 'callback_add_user' ] );
-		add_action( 'delete_user', [ $this, 'callback_delete_user' ], 10, 2 );
-		add_action( 'deleted_user', [ $this, 'callback_deleted_user' ], 10, 1 );
-		add_action( 'updated_user_meta', [ $this, 'callback_updated_user_meta' ], 10, 4 );
-		add_action( 'deleted_user_meta', [ $this, 'callback_deleted_user_meta' ], 10, 4 );
+	public function __construct() {
+		$this->action_monitor = new WPGraphQL_Action_Monitor();
 		add_action( 'profile_update', [ $this, 'callback_profile_update' ], 10, 1 );
+		add_action( 'add_user', [ $this, 'callback_add_user' ], 10, 1 );
 		add_action( 'delete_user', [ $this, 'callback_delete_user' ], 10, 2 );
 		add_action( 'deleted_user', [ $this, 'callback_deleted_user' ], 10, 1 );
 		add_action( 'updated_user_meta', [ $this, 'callback_updated_user_meta' ], 10, 4 );
-		add_action( 'added_user_meta', [ $this, 'callback_updated_user_meta' ], 10, 4 );
 		add_action( 'deleted_user_meta', [ $this, 'callback_deleted_user_meta' ], 10, 4 );
-
 	}
 
 	/**
-	 * This method accepts a user ID, and checks if the user has published posts
-	 * of any of the tracked post types
+	 * Checks if a user is published.
 	 *
-	 * @param int $user_id The ID of the user to check
-	 *
-	 * @return bool
+	 * @param int $user_id User ID to check.
+	 * @return bool True if the user is published, false otherwise.
 	 */
-	public function is_published_author( int $user_id ) {
-
-		$post_types            = $this->action_monitor->get_tracked_post_types();
-		$published_posts_count = count_user_posts( $user_id, $post_types );
+	private function is_published_author( int $user_id ): bool {
+		$published_posts_count = count_user_posts( $user_id );
 
 		if ( empty( $published_posts_count ) ) {
 			return false;
 		}
 
 		return true;
-
 	}
 
 	/**
@@ -80,8 +52,7 @@ class UserMonitor extends Monitor {
 	 *
 	 * @return bool
 	 */
-	public function should_track_meta( string $meta_key, $meta_value, $object ) {
-
+	private function should_track_meta( string $meta_key, $meta_value, $object ): bool {
 		$tracked_meta_keys = [
 			'description',
 			'nickname',
@@ -89,23 +60,26 @@ class UserMonitor extends Monitor {
 			'lastName',
 		];
 
-		$tracked_meta_keys = apply_filters( 'gatsby_action_monitor_tracked_user_meta_keys', $tracked_meta_keys, $meta_key, $meta_value, $object );
+		$tracked_meta_keys = apply_filters(
+			'gatsby_action_monitor_tracked_user_meta_keys',
+			$tracked_meta_keys,
+			$meta_key,
+			$meta_value,
+			$object
+		);
 
 		if ( in_array( $meta_key, $tracked_meta_keys, true ) ) {
 			return true;
 		}
 
 		return false;
-
 	}
-
 	/**
 	 * Log action when a user is updated.
 	 *
-	 * @param int $user_id
+	 * @param int $user_id User ID that was updated.
 	 */
 	public function callback_profile_update( int $user_id ) {
-
 		if ( empty( $user_id ) ) {
 			return;
 		}
@@ -131,7 +105,6 @@ class UserMonitor extends Monitor {
 				'status'              => 'publish',
 			]
 		);
-
 	}
 
 	public function callback_add_user( $user_id ) {
@@ -146,25 +119,25 @@ class UserMonitor extends Monitor {
 		$this->log_action(
 			[
 				'action_type'         => 'ADD',
-				'title'               => $user->display_name,
-				'node_id'             => (int) $user->ID,
-				'relay_id'            => Relay::toGlobalId( 'user', (int) $user->ID ),
-				'graphql_single_name' => 'user',
-				'graphql_plural_name' => 'users',
-				'status'              => 'publish',
+			'title'               => $user->display_name,
+			'node_id'             => (int) $user->ID,
+			'relay_id'            => Relay::toGlobalId( 'user', (int) $user->ID ),
+			'graphql_single_name' => 'user',
+			'graphql_plural_name' => 'users',
+			'status'              => 'publish',
 			]
 		);
 	}
 
-/**
- * Log action.
- *
- * @param array<string,mixed> $action Action data.
- */
-public function log_action( array $action ) {
-
-	// ...
+	/**
+	 * Log action.
+	 *
+	 * @param array<string,mixed> $action Action data.
+	 */
+	private function log_action( array $action ) {
+		// ...
 }
+
 	/**
 	 * There's no logging in this callback's action, the reason
 	 * behind this hook is so that we can store user objects before
@@ -178,7 +151,6 @@ public function log_action( array $action ) {
 	 * @param mixed|int|null $reassign_id User ID that posts should be reassigned to
 	 */
 	public function callback_delete_user( $user_id, $reassign_id ) {
-
 		if ( empty( $user_id ) ) {
 			return;
 		}
@@ -191,18 +163,21 @@ public function log_action( array $action ) {
 		$reassign_user = ! empty( $reassign_id ) ? get_user_by( 'id', $reassign_id ) : null;
 
 		if ( ! empty( $reassign_user ) ) {
-
-			// @todo: We should get rid of this as it can get expensive to log these actions.
-			// Gatsby Source WordPress should have support for bulk-actions so we can log a single action
-			// such as "DELETE_AUTHOR_AND_REASSIGN_POSTS" and pass the old author ID and new author ID and
-			// Gatsby could do it without an action per modified post.
 			global $wpdb;
 			$post_types = $this->action_monitor->get_tracked_post_types();
 			$post_types = implode( "', '", $post_types );
-			$post_ids   = $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_author = %d AND post_status = 'publish' AND post_type IN ('$post_types')", $user_id ) );
+			$post_ids   = $wpdb->get_col(
+				$wpdb->prepare(
+					"SELECT ID FROM $wpdb->posts WHERE post_author = %d AND post_status = 'publish' AND post_type IN ('$post_types')",
+					$user_id
+				)
+			);
 
 			if ( ! empty( $post_ids ) && is_array( $post_ids ) ) {
-				$this->post_ids_to_reassign = array_merge( $this->post_ids_to_reassign, $post_ids );
+				$this->post_ids_to_reassign = array_merge(
+					$this->post_ids_to_reassign,
+					$post_ids
+				);
 			}
 		}
 
@@ -218,8 +193,9 @@ public function log_action( array $action ) {
 	 * @param int $user_id Deleted user ID
 	 */
 	public function callback_deleted_user( int $user_id ) {
-
-		$before_delete = isset( $this->users_before_delete[ (int) $user_id ] ) ? $this->users_before_delete[ (int) $user_id ] : null;
+		$before_delete = isset( $this->users_before_delete[ (int) $user_id ] )
+			? $this->users_before_delete[ (int) $user_id ]
+			: null;
 
 		if ( empty( $before_delete ) || ! isset( $before_delete['user']->data->display_name ) ) {
 			return;
@@ -251,21 +227,14 @@ public function log_action( array $action ) {
 			);
 
 			if ( ! empty( $this->post_ids_to_reassign ) && is_array( $this->post_ids_to_reassign ) ) {
-
 				foreach ( $this->post_ids_to_reassign as $post_id ) {
-
-					// If there's a post for the Post ID
 					if ( ! empty( $post = get_post( absint( $post_id ) ) ) ) {
-
-						// If the post status is not published, don't track an action for it
 						if ( 'publish' !== $post->post_status ) {
 							return;
 						}
 
-						// Get the post type object
 						$post_type_object = get_post_type_object( $post->post_type );
 
-						// Log an action for the post being re-assigned
 						$this->log_action(
 							[
 								'action_type'         => 'UPDATE',
@@ -277,12 +246,10 @@ public function log_action( array $action ) {
 								'status'              => 'publish',
 							]
 						);
-
 					}
 				}
 			}
 		}
-
 	}
 
 	/**
@@ -294,13 +261,67 @@ public function log_action( array $action ) {
 	 * @param mixed  $meta_value Metadata value. Serialized if non-scalar.
 	 */
 	public function callback_updated_user_meta( int $meta_id, int $object_id, string $meta_key, $meta_value ) {
-
 		if ( empty( $user = get_user_by( 'id', $object_id ) ) || ! is_a( $user, 'WP_User' ) ) {
 			return;
 		}
 
 		if ( ! $this->is_published_author( $object_id ) ) {
 			return;
+		}
+
+		if ( false === $this->should_track_meta( $meta_key, $meta_value, $user ) ) {
+			return;
+		}
+
+		$action = [
+			'action_type'         => 'UPDATE',
+			'title'               => $user->display_name,
+			'node_id'             => (int) $user->ID,
+			'relay_id'            => Relay::toGlobalId( 'user', (int) $user->ID ),
+			'graphql_single_name' => 'user',
+			'graphql_plural_name' => 'users',
+			'status'              => 'publish',
+		];
+
+		// Log the action
+		$this->log_action( $action );
+	}
+
+	/**
+	 * Logs activity when meta is updated on terms
+	 *
+	 * @param string[] $meta_ids   An array of metadata entry IDs to delete.
+	 * @param int      $object_id  ID of the object metadata is for.
+	 * @param string   $meta_key   Metadata key.
+	 * @param mixed    $meta_value Metadata value. Serialized if non-scalar.
+	 */
+	public function callback_deleted_user_meta( array $meta_ids, int $object_id, string $meta_key, $meta_value ) {
+		if ( empty( $user = get_user_by( 'id', $object_id ) ) || ! is_a( $user, 'WP_User' ) ) {
+			return;
+		}
+
+		if ( ! $this->is_published_author( $object_id ) ) {
+			return;
+		}
+
+		if ( ! $this->should_track_meta( $meta_key, $meta_value, $user ) ) {
+			return;
+		}
+
+		$action = [
+			'action_type'         => 'UPDATE',
+			'title'               => $user->display_name,
+			'node_id'             => (int) $user->ID,
+			'relay_id'            => Relay::toGlobalId( 'user', (int) $user->ID ),
+			'graphql_single_name' => 'user',
+			'graphql_plural_name' => 'users',
+			'status'              => 'publish',
+		];
+
+		// Log the action
+		$this->log_action( $action );
+	}
+}
 		}
 
 		if ( false === $this->should_track_meta( $meta_key, $meta_value, $user ) ) {
@@ -346,6 +367,9 @@ public function log_action( array $action ) {
 
 		$action = [
 			'action_type'         => 'UPDATE',
+		$this->log_action(
+			[
+				'action_type'         => 'ADD',
 			'title'               => $user->display_name,
 			'node_id'             => (int) $user->ID,
 			'relay_id'            => Relay::toGlobalId( 'user', (int) $user->ID ),
@@ -357,5 +381,8 @@ public function log_action( array $action ) {
 		// Log the action
 		$this->log_action( $action );
 
+			]
+		);
 	}
 }
+
