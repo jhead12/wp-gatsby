@@ -2,30 +2,74 @@
 
 namespace WPGatsby\GraphQL;
 
-use \Firebase\JWT\JWT;
-use \WPGatsby\Admin\Settings;
+use Firebase\JWT\JWT;
+use WPGatsby\Admin\Settings;
 
 class Auth {
-	static function get_token() {
-		$site_url    = get_bloginfo( 'url' );
-		$secret      = Settings::get_setting( 'preview_jwt_secret' );
-		$now         = time();
-		$expiry      = $now + 3600;
-		$user_id     = get_current_user_id();
+    const TOKEN_EXPIRY_SECONDS = 3600; // Token expires in 1 hour
 
-		$payload = [
-			'iss'  => $site_url,
-			'aud'  => $site_url,
-			'iat'  => $now,
-			'nbf'  => $now,
-			'exp'  => $expiry,
-			'data' => [
-				'user_id' => $user_id,
-			],
-		];
+    /**
+     * Generate a JSON Web Token (JWT) for authentication.
+     *
+     * @return string JWT token
+     */
+    public static function get_token() {
+        $site_url = self::get_site_url();
+        $secret   = self::get_jwt_secret();
+        $user_id  = self::get_current_user_id();
 
-		$jwt = JWT::encode( $payload, $secret );
+        // Validate required values
+        if (empty($site_url) || empty($secret) || empty($user_id)) {
+            throw new \Exception('Invalid configuration for JWT generation.');
+        }
 
-		return $jwt;
-	}
+        $payload = [
+            'iss'  => $site_url,
+            'aud'  => $site_url,
+            'iat'  => time(),
+            'nbf'  => time(),
+            'exp'  => self::get_token_expiry_time(),
+            'data' => [
+                'user_id' => $user_id,
+            ],
+        ];
+
+        return JWT::encode($payload, $secret);
+    }
+
+    /**
+     * Get the site URL.
+     *
+     * @return string Site URL
+     */
+    private static function get_site_url() {
+        return get_bloginfo('url');
+    }
+
+    /**
+     * Get the JWT secret from settings.
+     *
+     * @return string JWT secret
+     */
+    private static function get_jwt_secret() {
+        return Settings::get_setting('preview_jwt_secret');
+    }
+
+    /**
+     * Get the current user ID.
+     *
+     * @return int User ID
+     */
+    private static function get_current_user_id() {
+        return get_current_user_id();
+    }
+
+    /**
+     * Calculate the token expiry time.
+     *
+     * @return int Expiry time in seconds since epoch
+     */
+    private static function get_token_expiry_time() {
+        return time() + self::TOKEN_EXPIRY_SECONDS;
+    }
 }

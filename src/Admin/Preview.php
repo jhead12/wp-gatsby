@@ -1,248 +1,32 @@
 <?php
 
-namespace WPGatsby\Admin;
+namespace WPGatsby;
 
-use GraphQL\Error\UserError;
-use WPGraphQL\Router;
-use WPGatsby\Admin\Settings;
+use UserError;
+use GraphQL\Deferred;
+use GraphQL\GraphQL;
+use GraphQL\Type\Definition\ObjectType;
+use GraphQL\Type\Definition\Type;
+use GraphQL\Type\Definition\InputObjectType;
+use GraphQL\Type\Schema;
+use GraphQL\Error\FormattedError;
+use WordPress\WP_Query;
+use function wp_remote_get;
+use function get_post_meta;
+use function json_decode;
+use function is_user_logged_in;
+use function current_user_can;
 
-class Preview {
-	function __construct() {
-		add_action(
-			'graphql_register_types',
-			function() {
-				$this->register_preview_status_fields_and_mutations();
-			}
-		);
+class GatsbyGraphQL {
+
+	const PREVIEW_FRONTEND_URL = 'http://localhost:8000';
+
+	public static function register_graphql_fields() {
+		self::register_gatsby_preview_status_field();
+		self::register_is_preview_frontend_online_field();
 	}
 
-	public static function get_gatsby_content_sync_url_for_post( $post ) {
-		// get the Gatsby Cloud loader url w/ site id
-		$gatsby_content_sync_url = Settings::get_setting( 'gatsby_content_sync_url' );
-					
-		// Create the dynamic path Content Sync will need
-		$manifest_id = self::get_preview_manifest_id_for_post( $post );
-		$content_id = $post->ID;
-		$path = "/gatsby-source-wordpress/$manifest_id/$content_id";
-
-		$url = preg_replace(
-			// remove any double forward slashes from the path
-			'/([^:])(\/{2,})/', '$1/',
-			"$gatsby_content_sync_url$path"
-		);
-
-		return $url;
-	}
-
-	public static function get_previewable_post_object_by_post_id( $post_id ) {
-		$revision = array_values(
-						wp_get_post_revisions( $post_id )
-					)[0]
-					// or if revisions are disabled, get the autosave
-					?? wp_get_post_autosave( $post_id, get_current_user_id() )
-						// otherwise we can't preview anything
-						?? null;
-
-		if ( $revision ) {
-			return $revision;
-		}
-
-		return get_post( $post_id );
-	}
-
-
-	public static function get_preview_manifest_id_for_post( $post ) {
-		$revision = self::get_previewable_post_object_by_post_id( $post->ID );
-		$revision_modified = $revision->post_modified ?? null;
-
-		$modified = 
-			$post->post_status === "draft"
-				? $post->post_modified
-				: $revision_modified;
-
-		if ( ! $modified || $modified === "" ) {
-			return null;
-		}
-
-		$manifest_id = $post->ID . $modified;
-
-		return $manifest_id;
-	}
-
-	/**
-	 * This is used to print out the client CSS file directly to the
-	 * Preview template html when Content Sync isn't set up correctly.
-	 */
-	public static function print_file_contents( $fileName ) {
-		$pluginDirectory = plugin_dir_path( __FILE__ );
-		$filePath        = $pluginDirectory . $fileName;
-		echo file_get_contents( $filePath );
-	}
-
-	function register_preview_status_fields_and_mutations() {
-		register_graphql_enum_type(
-			'WPGatsbyRemotePreviewStatusEnum',
-			[
-				'description' => __( 'The different statuses a Gatsby Preview can be in for a single node.', 'wp-gatsby' ),
-				'values'      => [
-					'PREVIEW_SUCCESS'                      => [
-						'value' => 'PREVIEW_SUCCESS',
-					],
-					'NO_PAGE_CREATED_FOR_PREVIEWED_NODE'   => [
-						'value' => 'NO_PAGE_CREATED_FOR_PREVIEWED_NODE',
-					],
-					'GATSBY_PREVIEW_PROCESS_ERROR'         => [
-						'value' => 'GATSBY_PREVIEW_PROCESS_ERROR',
-					],
-					'RECEIVED_PREVIEW_DATA_FROM_WRONG_URL' => [
-						'value' => 'RECEIVED_PREVIEW_DATA_FROM_WRONG_URL',
-					],
-				],
-			]
-		);
-
-		register_graphql_mutation(
-			'wpGatsbyRemotePreviewStatus',
-			[
-				'inputFields'         => [
-					// parentDatabaseId is the only input arg we need now.
-					// the rest are left for backwards compatibility so errors aren't thrown.
-					'parentDatabaseId' => [
-						'type'        => 'Number',
-						'description' => __( 'The previewed revisions post parent id', 'wp-gatsby' ),
-					],
-					'pagePath'         => [
-						'type'        => 'String',
-						'description' => __( 'The Gatsby page path for this preview.', 'wp-gatsby' ),
-					],
-					'modified'         => [
-						'type'        => 'String',
-						'description' => __( 'The modified date of the latest revision for this preview.', 'wp-gatsby' ),
-					],
-					'status'           => [
-						'type'        => [ 'non_null' => 'WPGatsbyRemotePreviewStatusEnum' ],
-						'description' => __( 'The remote status of the previewed node', 'wp-gatsby' ),
-					],
-					'statusContext'    => [
-						'type'        => 'String',
-						'description' => __( 'Additional context about the preview status', 'wp-gatsby' ),
-					],
-				],
-				'outputFields'        => [
-					'success' => [
-						'type'        => 'Boolean',
-						'description' => __( 'Wether or not the revision mutation was successful', 'wp-gatsby' ),
-						'resolve'     => function( $payload, $args, $context, $info ) {
-							$success = $payload['success'] ?? null;
-
-							return [
-								'success' => $success,
-							];
-						},
-					],
-				],
-				'mutateAndGetPayload' => function( $input, $context, $info ) {
-					$parent_id = $input['parentDatabaseId'] ?? null;
-					
-					$post = get_post( $parent_id );
-
-					$post_type_object = $post
-						? get_post_type_object( $post->post_type )
-						: null;
-
-					$user_can_edit_this_post = $post
-						? current_user_can(
-							$post_type_object->cap->edit_posts,
-							$parent_id
-						)
-						: null;
-
-					if ( ! $post || ! $user_can_edit_this_post ) {
-						$message = sprintf(
-							__(
-								'Sorry, you are not allowed to update post %1$s',
-								'wp-gatsby'
-							),
-							$parent_id
-						);
-
-						throw new UserError( $message );
-					}
-
-					// delete action monitor preview action.
-					// once we've saved this preview status as succes
-					// we don't need the preview action anymore.
-					$existing = new \WP_Query( [
-						'post_type'      => 'action_monitor',
-						'post_status'    => 'any',
-						'posts_per_page' => 1,
-						'no_found_rows'  => true,
-						'fields'         => 'ids',
-						'tax_query'      => [
-							'relation' => 'AND',
-							[
-								'taxonomy' => 'gatsby_action_ref_node_dbid',
-								'field'    => 'name',
-								'terms'    => sanitize_text_field( $parent_id ),
-							],
-							[
-								'taxonomy' => 'gatsby_action_stream_type',
-								'field'    => 'name',
-								'terms'    => 'PREVIEW',
-							]
-						],
-					] );
-
-					if ( isset( $existing->posts ) && ! empty( $existing->posts ) ) {
-						wp_delete_post( $existing->posts[0], true );
-					}
-
-					return [
-						'success' => true,
-					];
-				},
-			]
-		);
-
-		register_graphql_object_type(
-			'WPGatsbyPageNode',
-			[
-				'description' => __( 'A previewed Gatsby page node.' ),
-				'fields'      => [
-					'path' => [
-						'type' => 'String',
-					],
-				],
-			]
-		);
-
-		register_graphql_enum_type(
-			'WPGatsbyWPPreviewedNodeStatus',
-			[
-				'description' => __( 'The different statuses a Gatsby Preview can be in for a single node.', 'wp-gatsby' ),
-				'values'      => [
-					'NO_NODE_FOUND'                             => [
-						'value' => 'NO_NODE_FOUND',
-					],
-					'PREVIEW_READY'                             => [
-						'value' => 'PREVIEW_READY',
-					],
-					'REMOTE_NODE_NOT_YET_UPDATED'               => [
-						'value' => 'REMOTE_NODE_NOT_YET_UPDATED',
-					],
-					'NO_PREVIEW_PATH_FOUND'                     => [
-						'value' => 'NO_PREVIEW_PATH_FOUND',
-					],
-					'RECEIVED_PREVIEW_DATA_FROM_WRONG_URL'      => [
-						'value' => 'RECEIVED_PREVIEW_DATA_FROM_WRONG_URL',
-					],
-					'PREVIEW_PAGE_UPDATED_BUT_NOT_YET_DEPLOYED' => [
-						'value' => 'PREVIEW_PAGE_UPDATED_BUT_NOT_YET_DEPLOYED',
-					],
-				],
-			]
-		);
-
+	private static function register_gatsby_preview_status_field() {
 		register_graphql_object_type(
 			'WPGatsbyPreviewStatus',
 			[
@@ -368,10 +152,10 @@ class Preview {
 								$server_side
 							);
 
-						$page_data_path = $found_preview_path_post_meta === "/" 
+						$page_data_path = $found_preview_path_post_meta === "/"
 							? "/index/"
 							: $found_preview_path_post_meta;
-		
+
 						$page_data_path_trimmed = trim( $page_data_path, "/" );
 
 						$modified_deployed_url =
@@ -388,20 +172,11 @@ class Preview {
 							$page_data->result->pageContext->__wpGatsbyNodeModified
 							?? null;
 
-						error_log(print_r('$modified_response', true)); 
-						error_log(print_r($modified_response, true)); 
-						error_log(print_r('$modified', true)); 
-						error_log(print_r($modified, true)); 
-
 						$preview_was_deployed =
 							$modified_response &&
 							strtotime( $modified_response ) >= strtotime( $modified );
 
-						error_log(print_r('$preview_was_deployed', true)); 
-						error_log(print_r($preview_was_deployed, true)); 
-
 						if ( ! $preview_was_deployed ) {
-							// if preview was not yet deployed, send back PREVIEW_PAGE_UPDATED_BUT_NOT_YET_DEPLOYED.
 							return [
 								'statusType'    =>
 									'PREVIEW_PAGE_UPDATED_BUT_NOT_YET_DEPLOYED',
@@ -409,7 +184,6 @@ class Preview {
 								'remoteStatus'  => null,
 							];
 						} else {
-							// if it is deployed, send back PREVIEW_READY below.
 							$node_was_updated = true;
 						}
 					}
@@ -419,15 +193,6 @@ class Preview {
 						? $remote_status
 						: null;
 
-					/**
-					 * We need the above check for wether the node was updated so we
-					 * don't show stale statuses on existing nodes, but in the case that
-					 * it's a brand new draft, $node_was_updated will always be false
-					 * because at this point we're potentially getting an error on a
-					 * node that was never created. So GATSBY_PREVIEW_PROCESS_ERROR is a
-					 * special case where we always need to show the status regardless
-					 * of wether the node was updated.
-					 */
 					if ( 'GATSBY_PREVIEW_PROCESS_ERROR' === $remote_status ) {
 						$remote_status_type = $remote_status;
 					}
@@ -470,7 +235,9 @@ class Preview {
 				},
 			]
 		);
+	}
 
+	private static function register_is_preview_frontend_online_field() {
 		register_graphql_field(
 			'WPGatsby',
 			'isPreviewFrontendOnline',
@@ -487,11 +254,30 @@ class Preview {
 					$request = wp_remote_get( $preview_url );
 
 					$request_was_successful =
-						$this->was_request_successful( $request );
+						self::was_request_successful( $request );
 
 					return $request_was_successful;
 				},
 			]
 		);
 	}
+
+	private static function get_gatsby_preview_instance_url( $server_side = false ) {
+		if ( $server_side ) {
+			return self::PREVIEW_FRONTEND_URL;
+		} else {
+			return self::PREVIEW_FRONTEND_URL . '/__graphql';
+		}
+	}
+
+	private static function was_request_successful( $request ) {
+		$status_code = wp_remote_retrieve_response_code( $request );
+
+		if ( $status_code === 200 ) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 }
