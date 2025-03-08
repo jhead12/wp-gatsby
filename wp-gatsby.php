@@ -2,13 +2,13 @@
 /**
  * Plugin Name: WP Gatsby
  * Description: Optimize your WordPress site to be a source for Gatsby sites.
- * Version: 2.3.3
- * Author: GatsbyJS, Jason Bahl, Tyler Barnes
+ * Version: 2.3.4
+ * Author: GatsbyJS, Jason Bahl, Tyler Barnes, Joshua Head
  * Author URI: https://gatsbyjs.org
  * Text Domain: wp-gatsby
  * Domain Path: /languages/
- * Requires at least: 5.4.2
- * Requires PHP: 7.3
+ * Requires at least: 5.8
+ * Requires PHP: 7.4
  * License: GPL-3
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  */
@@ -103,7 +103,7 @@ final class WPGatsby
     {
         // Plugin version.
         if (! defined('WPGATSBY_VERSION') ) {
-            define('WPGATSBY_VERSION', '2.3.3');
+            define('WPGATSBY_VERSION', '2.3.4');
         }
 
         // Plugin Folder Path.
@@ -134,7 +134,6 @@ final class WPGatsby
         if (! defined('WPGATSBY_DEBUG') ) {
             define('WPGATSBY_DEBUG', false);
         }
-
     }
 
     /**
@@ -206,7 +205,7 @@ final class WPGatsby
 
 /**
  * Show admin notice to admins if this plugin is active but WPGraphQL
- * is not active
+ * is not active or below version 2.0.
  */
 function wpgatsby_show_admin_notice()
 {
@@ -223,7 +222,7 @@ function wpgatsby_show_admin_notice()
         function () {
             ?>
             <div class="error notice">
-                    <p><?php esc_html_e('WPGraphQL must be active for WPGatsby to work.', 'wp-gatsby'); ?> <a target="_blank" href="<?php echo esc_url('https://github.com/wp-graphql/wp-graphql/releases'); ?>">Download the latest release here.</a></p>
+                    <p><?php esc_html_e('WPGraphQL version 2.0 or higher must be active for WPGatsby to work.', 'wp-gatsby'); ?> <a target="_blank" href="<?php echo esc_url('https://github.com/wp-graphql/wp-graphql/releases'); ?>">Download the latest release here.</a></p>
             </div>
             <?php
         }
@@ -233,7 +232,7 @@ function wpgatsby_show_admin_notice()
 if (! function_exists('gatsby_init') ) {
     function gatsby_init()
     {
-        if (! defined('WPGRAPHQL_AUTOLOAD') ) {
+        if (! defined('WPGRAPHQL_VERSION') || version_compare(WPGRAPHQL_VERSION, '2.0', '<') ) {
             // Show the admin notice
             add_action('admin_init', 'wpgatsby_show_admin_notice');
 

@@ -28,7 +28,15 @@ class UserMonitor extends Monitor {
 	public function init() {
 
 		$this->post_ids_to_reassign = [];
+		register_hooks()
+	}
 
+	public function register_hooks() {
+		add_action( 'user_register', [ $this, 'callback_add_user' ] );
+		add_action( 'delete_user', [ $this, 'callback_delete_user' ], 10, 2 );
+		add_action( 'deleted_user', [ $this, 'callback_deleted_user' ], 10, 1 );
+		add_action( 'updated_user_meta', [ $this, 'callback_updated_user_meta' ], 10, 4 );
+		add_action( 'deleted_user_meta', [ $this, 'callback_deleted_user_meta' ], 10, 4 );
 		add_action( 'profile_update', [ $this, 'callback_profile_update' ], 10, 1 );
 		add_action( 'delete_user', [ $this, 'callback_delete_user' ], 10, 2 );
 		add_action( 'deleted_user', [ $this, 'callback_deleted_user' ], 10, 1 );
@@ -126,6 +134,37 @@ class UserMonitor extends Monitor {
 
 	}
 
+	public function callback_add_user( $user_id ) {
+		if ( empty( $user = get_userdata( $user_id ) ) || ! is_a( $user, 'WP_User' ) ) {
+			return;
+		}
+		// Check if the user is published
+		if ( ! $this->is_published_author( $user_id ) ) {
+			return;
+		}
+		// Log the action
+		$this->log_action(
+			[
+				'action_type'         => 'ADD',
+				'title'               => $user->display_name,
+				'node_id'             => (int) $user->ID,
+				'relay_id'            => Relay::toGlobalId( 'user', (int) $user->ID ),
+				'graphql_single_name' => 'user',
+				'graphql_plural_name' => 'users',
+				'status'              => 'publish',
+			]
+		);
+	}
+
+/**
+ * Log action.
+ *
+ * @param array<string,mixed> $action Action data.
+ */
+public function log_action( array $action ) {
+
+	// ...
+}
 	/**
 	 * There's no logging in this callback's action, the reason
 	 * behind this hook is so that we can store user objects before
