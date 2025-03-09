@@ -17,6 +17,16 @@
       "name": "Joshua Head"
     }
   ],
+  "repositories":[
+      {
+          "type":"composer",
+          "url":"https://wpackagist.org",
+          "only": [
+              "wpackagist-plugin/*",
+              "wpackagist-theme/*"
+          ]
+      }
+  ],
   "autoload": {
     "psr-4": {
       "WPGatsby\\": "./src/"
@@ -32,12 +42,14 @@
     "process-timeout": 0,
     "allow-plugins": {
       "dealerdirect/phpcodesniffer-composer-installer": true
-    }
+    } 
+
   },
   "require": {
     "php": "^7.3||^8.0",
     "firebase/php-jwt": "^5.2",
     "ircmaxell/random-lib": "^1.2",
+
     "composer/semver": "^1.5"
   },
   "require-dev": {
@@ -56,6 +68,13 @@
     "codeception/module-rest": "^1.2",
     "wp-graphql/wp-graphql-testcase": "^2.0.0",
     "phpunit/phpunit": "9.4.1"
+  },
+  "extra": {
+      "installer-paths": {
+          "wp-content/plugins/{$name}/": [
+              "type:wordpress-plugin"
+          ]
+      }
   },
   "scripts": {
     "install-test-env": "bash bin/install-test-env.sh",

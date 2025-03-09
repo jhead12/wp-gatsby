@@ -32,22 +32,21 @@ RUN apt-get update && \
 
 # Install Dockerize
 ENV DOCKERIZE_VERSION=v0.6.1
-RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
-    && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
-    && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+RUN curl -L "https://github.com/jwilder/dockerize/releases/download/${DOCKERIZE_VERSION}/dockerize-linux-amd64" -o /usr/local/bin/dockerize \
+    && chmod +x /usr/local/bin/dockerize
 
 # Install WP-CLI
-RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
-    && chmod +x wp-cli.phar \
-    && mv wp-cli.phar /usr/local/bin/wp
+RUN curl -s -o /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
+    && chmod +x /usr/local/bin/wp
+
 
 # Set project environmental variables
-ENV WP_ROOT_FOLDER="/var/www/html"
+# ENV WP_ROOT_FOLDER="/var/www/html"
 # ENV WORDPRESS_DB_HOST="${WORDPRESS_DB_HOST}"
 # ENV WORDPRESS_DB_PASSWORD="${WORDPRESS_DB_PASSWORD}"
 # ENV WORDPRESS_DB_NAME="${WORDPRESS_DB_NAME}"
-ENV PLUGINS_DIR="${WP_ROOT_FOLDER}/wp-content/plugins"
-ENV PROJECT_DIR="${PLUGINS_DIR}/wp-gatsby"
+# ENV PLUGINS_DIR="${WP_ROOT_FOLDER}/wp-content/plugins"
+# ENV PROJECT_DIR="${PLUGINS_DIR}/wp-gatsby"
 
 # Remove exec statement from base entrypoint script.
 WORKDIR /var/www/html

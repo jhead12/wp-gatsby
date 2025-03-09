@@ -20,7 +20,7 @@ use function current_user_can;
 class Preview
 {
 
-    const PREVIEW_FRONTEND_URL = 'http://localhost:8000';
+    const PREVIEW_FRONTEND_URL = 'http://localhost:${PORT}';
 
     public static function register_graphql_fields()
     {

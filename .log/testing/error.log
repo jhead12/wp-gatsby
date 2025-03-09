@@ -36,3 +36,77 @@
 [Sun Mar 09 07:48:38.307485 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
 [Sun Mar 09 07:50:30.907324 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
 [Sun Mar 09 07:50:30.907772 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Sun Mar 09 08:15:28.854706 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Sun Mar 09 08:15:28.855028 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Sun Mar 09 08:53:02.559110 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Sun Mar 09 08:53:02.562046 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Sun Mar 09 09:08:28.679138 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Sun Mar 09 09:08:28.679903 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Sun Mar 09 09:23:17.874056 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Sun Mar 09 09:23:17.875501 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Sun Mar 09 09:32:49.550301 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Sun Mar 09 09:32:49.551002 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Sun Mar 09 09:37:01.152980 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Sun Mar 09 09:37:01.170571 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Sun Mar 09 09:41:08.387137 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Sun Mar 09 09:41:08.387987 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Sun Mar 09 09:48:14.230471 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Sun Mar 09 09:48:14.231254 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Sun Mar 09 09:52:52.952277 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Sun Mar 09 09:52:52.952792 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Sun Mar 09 10:03:11.167002 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Sun Mar 09 10:03:11.169001 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Sun Mar 09 10:07:03.639209 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Sun Mar 09 10:07:03.640188 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Sun Mar 09 10:15:37.881910 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Sun Mar 09 10:15:37.882561 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Sun Mar 09 10:16:16.326828 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Sun Mar 09 10:16:16.327348 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Sun Mar 09 10:16:52.633971 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Sun Mar 09 10:16:52.634299 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Sun Mar 09 10:17:15.392379 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Sun Mar 09 10:17:15.392692 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Sun Mar 09 10:17:59.541215 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Sun Mar 09 10:17:59.541636 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Sun Mar 09 10:18:33.550011 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Sun Mar 09 10:18:33.550299 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Sun Mar 09 10:19:24.781725 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Sun Mar 09 10:19:24.782108 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Sun Mar 09 10:20:22.870957 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Sun Mar 09 10:20:22.871319 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Sun Mar 09 10:30:04.833282 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Sun Mar 09 10:30:04.833660 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Sun Mar 09 10:31:05.229370 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Sun Mar 09 10:31:05.229834 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Sun Mar 09 10:34:14.065709 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Sun Mar 09 10:34:14.065992 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Sun Mar 09 10:34:53.783410 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Sun Mar 09 10:34:53.783581 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Sun Mar 09 10:36:29.707948 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Sun Mar 09 10:36:29.708267 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Sun Mar 09 10:37:15.055966 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Sun Mar 09 10:37:15.056187 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Sun Mar 09 10:39:29.212654 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Sun Mar 09 10:39:29.212898 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Sun Mar 09 10:39:56.656914 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Sun Mar 09 10:39:56.657032 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Sun Mar 09 10:41:01.102246 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Sun Mar 09 10:41:01.102356 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Sun Mar 09 10:42:03.691646 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Sun Mar 09 10:42:03.691912 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Sun Mar 09 10:43:29.590364 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Sun Mar 09 10:43:29.590698 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Sun Mar 09 10:46:09.005133 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Sun Mar 09 10:46:09.005246 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Sun Mar 09 10:49:00.304244 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Sun Mar 09 10:49:00.304730 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Sun Mar 09 10:58:49.201400 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Sun Mar 09 10:58:49.202285 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Sun Mar 09 11:00:52.594994 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Sun Mar 09 11:00:52.605715 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Sun Mar 09 11:01:48.490567 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Sun Mar 09 11:01:48.495131 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Sun Mar 09 11:06:17.688248 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Sun Mar 09 11:06:17.690591 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Sun Mar 09 11:11:21.133144 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Sun Mar 09 11:11:21.133830 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'

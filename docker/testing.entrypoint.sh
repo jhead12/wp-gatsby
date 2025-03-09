@@ -43,7 +43,7 @@ echo "Moving to WordPress root directory."
 cd ${WP_ROOT_FOLDER}
 
 # Run app entrypoint script.
-. app-entrypoint.sh
+. ./usr/local/bin/app-entrypoint.sh
 
 write_htaccess
 
@@ -113,7 +113,7 @@ COMPOSER_MEMORY_LIMIT=-1 composer update --prefer-source ${prefer_lowest}
 COMPOSER_MEMORY_LIMIT=-1 composer install --prefer-source --no-interaction
 
 # Install pcov/clobber if PHP7.1+
-if version_gt $PHP_VERSION 7.0 && [[ -n "$COVERAGE" ]] && [[ -z "$USING_XDEBUG" ]]; then
+if version_gt $PHP_VERSION 8.1 && [[ -n "$COVERAGE" ]] && [[ -z "$USING_XDEBUG" ]]; then
     echo "Installing pcov/clobber"
     COMPOSER_MEMORY_LIMIT=-1 composer require --dev pcov/clobber
     vendor/bin/pcov clobber

@@ -31,7 +31,7 @@ ENV PATH="$PATH:~/.composer/vendor/bin"
 RUN echo "date.timezone = UTC" >> /usr/local/etc/php/php.ini
 
 # Remove exec statement from base entrypoint script.
-RUN if [ -f "/usr/local/bin/app-entrypoint.sh" ]; then sed -i '$d' /usr/local/bin/app-entrypoint.sh; fi
+RUN if [ -f "app-entrypoint.sh" ]; then sed -i '$d' app-entrypoint.sh; fi
 
 # Set up entrypoint
 WORKDIR    /var/www/html/wp-content/plugins/wp-gatsby
@@ -41,7 +41,6 @@ RUN        chmod 755 /usr/local/bin/testing-entrypoint.sh
 
 
 # Set up Apache
-RUN echo 'ServerName localhost' >> /etc/apache2/apache2.conf
 
 # Set up entrypoint
 ENTRYPOINT ["testing-entrypoint.sh"]
