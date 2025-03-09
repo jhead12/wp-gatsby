@@ -25,16 +25,24 @@ RUN curl -sS https://getcomposer.org/installer | php -- \
     --install-dir=/usr/local/bin
 
 # Add composer global binaries to PATH
-ENV PATH "$PATH:~/.composer/vendor/bin"
+ENV PATH="$PATH:~/.composer/vendor/bin"
 
 # Configure php
 RUN echo "date.timezone = UTC" >> /usr/local/etc/php/php.ini
 
 # Remove exec statement from base entrypoint script.
-RUN sed -i '$d' /usr/local/bin/app-entrypoint.sh
+RUN if [ -f "/usr/local/bin/app-entrypoint.sh" ]; then sed -i '$d' /usr/local/bin/app-entrypoint.sh; fi
 
 # Set up entrypoint
 WORKDIR    /var/www/html/wp-content/plugins/wp-gatsby
 COPY       docker/testing.entrypoint.sh /usr/local/bin/testing-entrypoint.sh
 RUN        chmod 755 /usr/local/bin/testing-entrypoint.sh
+
+
+
+# Set up Apache
+RUN echo 'ServerName localhost' >> /etc/apache2/apache2.conf
+
+# Set up entrypoint
 ENTRYPOINT ["testing-entrypoint.sh"]
+CMD ["apache2-foreground"]

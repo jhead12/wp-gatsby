@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'gatsbyjs/wp-gatsby',
-        'pretty_version' => 'dev-master',
-        'version' => 'dev-master',
-        'reference' => '0d1e92ae4f01b680a766cf0f2d4ff4a1955c9949',
+        'pretty_version' => '1.0.0+no-version-set',
+        'version' => '1.0.0.0',
+        'reference' => null,
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -284,9 +284,9 @@
             ),
         ),
         'gatsbyjs/wp-gatsby' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
-            'reference' => '0d1e92ae4f01b680a766cf0f2d4ff4a1955c9949',
+            'pretty_version' => '1.0.0+no-version-set',
+            'version' => '1.0.0.0',
+            'reference' => null,
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

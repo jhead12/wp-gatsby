@@ -54,18 +54,55 @@ cd ${workdir}
 # Ensure Apache is running
 service apache2 start
 
+if ! command -v dockerize &> /dev/null; then
+    echo "Dockerize is not installed. Attempting to install it now..."
+
+    # Identify the operating system and download Dockerize
+    if [ "$(uname -s)" == "Linux" ]; then
+        curl -L https://github.com/jwilder/dockerize/releases/download/v0.6.1/dockerize-linux-amd64 \
+            -o /usr/local/bin/dockerize
+    elif [ "$(uname -s)" == "Darwin" ]; then
+        curl -L https://github.com/jwilder/dockerize/releases/download/v0.6.1/dockerize-darwin-amd64 \
+            -o /usr/local/bin/dockerize
+    else
+        echo "Unsupported OS. Please install Dockerize manually."
+        exit 1
+    fi
+
+    # Set executable permissions
+    chmod +x /usr/local/bin/dockerize
+
+    # Verify installation
+    if command -v dockerize &> /dev/null; then
+        echo "Dockerize has been successfully installed."
+    else
+        echo "Failed to install Dockerize. Please install it manually."
+        exit 1
+    fi
+else
+    echo "Dockerize is installed and ready to use."
+fi
+
+
 # Ensure everything is loaded
+if command -v dockerize &> /dev/null; then
 dockerize \
     -wait tcp://${DB_HOST}:${DB_HOST_PORT:-3306} \
     -wait ${WP_URL} \
     -timeout 1m
+else
+dockerize -wait tcp://${DB_HOST}:${DB_HOST_PORT:-3306} -wait ${WP_URL} -timeout 1m 2>&1 | tee dockerize.log
+
+    echo "dockerize not found. Please install it to continue."
+    exit 1
+fi
+
 
 # Download c3 for testing.
 if [ ! -f "$PROJECT_DIR/c3.php" ]; then
     echo "Downloading Codeception's c3.php"
     curl -L 'https://raw.github.com/Codeception/c3/2.0/c3.php' > "$PROJECT_DIR/c3.php"
 fi
-
 local prefer_lowest=""
 if [[ -n "$LOWEST" ]]; then
     prefer_lowest="--prefer-source"

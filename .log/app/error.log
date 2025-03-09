@@ -2,3 +2,131 @@ AH00558: apache2: Could not reliably determine the server's fully qualified doma
 [Sun Mar 09 05:14:48.990127 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
 [Sun Mar 09 05:14:48.990248 2025] [core:notice] [pid 1:tid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
 [Sun Mar 09 05:16:10.420275 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00170: caught SIGWINCH, shutting down gracefully
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.3. Set the 'ServerName' directive globally to suppress this message
+[Sun Mar 09 05:37:02.559138 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Sun Mar 09 05:37:02.560892 2025] [core:notice] [pid 1:tid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[09-Mar-2025 05:49:18 UTC] PHP Fatal error:  Uncaught Error: Class "WPGraphQL_Settings_API" not found in /var/www/html/wp-content/plugins/wp-gatsby/src/Admin/Settings.php:17
+Stack trace:
+#0 /var/www/html/wp-content/plugins/wp-gatsby/wp-gatsby.php(177): WPGatsby\Admin\Settings->__construct()
+#1 /var/www/html/wp-content/plugins/wp-gatsby/wp-gatsby.php(57): WPGatsby::init()
+#2 /var/www/html/wp-content/plugins/wp-gatsby/wp-gatsby.php(243): WPGatsby::instance()
+#3 /var/www/html/wp-content/plugins/wp-gatsby/wp-gatsby.php(249): gatsby_init()
+#4 /var/www/html/wp-includes/class-wp-hook.php(324): {closure}('')
+#5 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters(NULL, Array)
+#6 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#7 /var/www/html/wp-settings.php(578): do_action('plugins_loaded')
+#8 /var/www/html/wp-config.php(102): require_once('/var/www/html/w...')
+#9 /var/www/html/wp-load.php(50): require_once('/var/www/html/w...')
+#10 /var/www/html/wp-admin/admin.php(35): require_once('/var/www/html/w...')
+#11 /var/www/html/wp-admin/plugins.php(10): require_once('/var/www/html/w...')
+#12 {main}
+  thrown in /var/www/html/wp-content/plugins/wp-gatsby/src/Admin/Settings.php on line 17
+[09-Mar-2025 05:49:30 UTC] PHP Fatal error:  Uncaught Error: Class "WPGraphQL_Settings_API" not found in /var/www/html/wp-content/plugins/wp-gatsby/src/Admin/Settings.php:17
+Stack trace:
+#0 /var/www/html/wp-content/plugins/wp-gatsby/wp-gatsby.php(177): WPGatsby\Admin\Settings->__construct()
+#1 /var/www/html/wp-content/plugins/wp-gatsby/wp-gatsby.php(57): WPGatsby::init()
+#2 /var/www/html/wp-content/plugins/wp-gatsby/wp-gatsby.php(243): WPGatsby::instance()
+#3 /var/www/html/wp-content/plugins/wp-gatsby/wp-gatsby.php(249): gatsby_init()
+#4 /var/www/html/wp-includes/class-wp-hook.php(324): {closure}('')
+#5 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters(NULL, Array)
+#6 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#7 /var/www/html/wp-settings.php(578): do_action('plugins_loaded')
+#8 /var/www/html/wp-config.php(102): require_once('/var/www/html/w...')
+#9 /var/www/html/wp-load.php(50): require_once('/var/www/html/w...')
+#10 /var/www/html/wp-admin/admin.php(35): require_once('/var/www/html/w...')
+#11 /var/www/html/wp-admin/plugins.php(10): require_once('/var/www/html/w...')
+#12 {main}
+  thrown in /var/www/html/wp-content/plugins/wp-gatsby/src/Admin/Settings.php on line 17
+[09-Mar-2025 05:49:35 UTC] PHP Fatal error:  Uncaught Error: Class "WPGraphQL_Settings_API" not found in /var/www/html/wp-content/plugins/wp-gatsby/src/Admin/Settings.php:17
+Stack trace:
+#0 /var/www/html/wp-content/plugins/wp-gatsby/wp-gatsby.php(177): WPGatsby\Admin\Settings->__construct()
+#1 /var/www/html/wp-content/plugins/wp-gatsby/wp-gatsby.php(57): WPGatsby::init()
+#2 /var/www/html/wp-content/plugins/wp-gatsby/wp-gatsby.php(243): WPGatsby::instance()
+#3 /var/www/html/wp-content/plugins/wp-gatsby/wp-gatsby.php(249): gatsby_init()
+#4 /var/www/html/wp-includes/class-wp-hook.php(324): {closure}('')
+#5 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters(NULL, Array)
+#6 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#7 /var/www/html/wp-settings.php(578): do_action('plugins_loaded')
+#8 /var/www/html/wp-config.php(102): require_once('/var/www/html/w...')
+#9 /var/www/html/wp-load.php(50): require_once('/var/www/html/w...')
+#10 /var/www/html/wp-admin/admin.php(35): require_once('/var/www/html/w...')
+#11 /var/www/html/wp-admin/index.php(10): require_once('/var/www/html/w...')
+#12 {main}
+  thrown in /var/www/html/wp-content/plugins/wp-gatsby/src/Admin/Settings.php on line 17
+[09-Mar-2025 05:49:39 UTC] PHP Fatal error:  Uncaught Error: Class "WPGraphQL_Settings_API" not found in /var/www/html/wp-content/plugins/wp-gatsby/src/Admin/Settings.php:17
+Stack trace:
+#0 /var/www/html/wp-content/plugins/wp-gatsby/wp-gatsby.php(177): WPGatsby\Admin\Settings->__construct()
+#1 /var/www/html/wp-content/plugins/wp-gatsby/wp-gatsby.php(57): WPGatsby::init()
+#2 /var/www/html/wp-content/plugins/wp-gatsby/wp-gatsby.php(243): WPGatsby::instance()
+#3 /var/www/html/wp-content/plugins/wp-gatsby/wp-gatsby.php(249): gatsby_init()
+#4 /var/www/html/wp-includes/class-wp-hook.php(324): {closure}('')
+#5 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters(NULL, Array)
+#6 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#7 /var/www/html/wp-settings.php(578): do_action('plugins_loaded')
+#8 /var/www/html/wp-config.php(102): require_once('/var/www/html/w...')
+#9 /var/www/html/wp-load.php(50): require_once('/var/www/html/w...')
+#10 /var/www/html/wp-blog-header.php(13): require_once('/var/www/html/w...')
+#11 /var/www/html/index.php(17): require('/var/www/html/w...')
+#12 {main}
+  thrown in /var/www/html/wp-content/plugins/wp-gatsby/src/Admin/Settings.php on line 17
+[09-Mar-2025 05:49:41 UTC] PHP Fatal error:  Uncaught Error: Class "WPGraphQL_Settings_API" not found in /var/www/html/wp-content/plugins/wp-gatsby/src/Admin/Settings.php:17
+Stack trace:
+#0 /var/www/html/wp-content/plugins/wp-gatsby/wp-gatsby.php(177): WPGatsby\Admin\Settings->__construct()
+#1 /var/www/html/wp-content/plugins/wp-gatsby/wp-gatsby.php(57): WPGatsby::init()
+#2 /var/www/html/wp-content/plugins/wp-gatsby/wp-gatsby.php(243): WPGatsby::instance()
+#3 /var/www/html/wp-content/plugins/wp-gatsby/wp-gatsby.php(249): gatsby_init()
+#4 /var/www/html/wp-includes/class-wp-hook.php(324): {closure}('')
+#5 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters(NULL, Array)
+#6 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#7 /var/www/html/wp-settings.php(578): do_action('plugins_loaded')
+#8 /var/www/html/wp-config.php(102): require_once('/var/www/html/w...')
+#9 /var/www/html/wp-load.php(50): require_once('/var/www/html/w...')
+#10 /var/www/html/wp-blog-header.php(13): require_once('/var/www/html/w...')
+#11 /var/www/html/index.php(17): require('/var/www/html/w...')
+#12 {main}
+  thrown in /var/www/html/wp-content/plugins/wp-gatsby/src/Admin/Settings.php on line 17
+[Sun Mar 09 05:50:09.627944 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00170: caught SIGWINCH, shutting down gracefully
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.3. Set the 'ServerName' directive globally to suppress this message
+[Sun Mar 09 05:50:25.920105 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Sun Mar 09 05:50:25.920270 2025] [core:notice] [pid 1:tid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[09-Mar-2025 05:50:56 UTC] PHP Fatal error:  Uncaught Error: Class "WPGraphQL_Settings_API" not found in /var/www/html/wp-content/plugins/wp-gatsby/src/Admin/Settings.php:17
+Stack trace:
+#0 /var/www/html/wp-content/plugins/wp-gatsby/wp-gatsby.php(177): WPGatsby\Admin\Settings->__construct()
+#1 /var/www/html/wp-content/plugins/wp-gatsby/wp-gatsby.php(57): WPGatsby::init()
+#2 /var/www/html/wp-content/plugins/wp-gatsby/wp-gatsby.php(243): WPGatsby::instance()
+#3 /var/www/html/wp-content/plugins/wp-gatsby/wp-gatsby.php(249): gatsby_init()
+#4 /var/www/html/wp-includes/class-wp-hook.php(324): {closure}('')
+#5 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters(NULL, Array)
+#6 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#7 /var/www/html/wp-settings.php(578): do_action('plugins_loaded')
+#8 /var/www/html/wp-config.php(102): require_once('/var/www/html/w...')
+#9 /var/www/html/wp-load.php(50): require_once('/var/www/html/w...')
+#10 /var/www/html/wp-blog-header.php(13): require_once('/var/www/html/w...')
+#11 /var/www/html/index.php(17): require('/var/www/html/w...')
+#12 {main}
+  thrown in /var/www/html/wp-content/plugins/wp-gatsby/src/Admin/Settings.php on line 17
+[09-Mar-2025 05:51:02 UTC] PHP Fatal error:  Uncaught Error: Class "WPGraphQL_Settings_API" not found in /var/www/html/wp-content/plugins/wp-gatsby/src/Admin/Settings.php:17
+Stack trace:
+#0 /var/www/html/wp-content/plugins/wp-gatsby/wp-gatsby.php(177): WPGatsby\Admin\Settings->__construct()
+#1 /var/www/html/wp-content/plugins/wp-gatsby/wp-gatsby.php(57): WPGatsby::init()
+#2 /var/www/html/wp-content/plugins/wp-gatsby/wp-gatsby.php(243): WPGatsby::instance()
+#3 /var/www/html/wp-content/plugins/wp-gatsby/wp-gatsby.php(249): gatsby_init()
+#4 /var/www/html/wp-includes/class-wp-hook.php(324): {closure}('')
+#5 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters(NULL, Array)
+#6 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#7 /var/www/html/wp-settings.php(578): do_action('plugins_loaded')
+#8 /var/www/html/wp-config.php(102): require_once('/var/www/html/w...')
+#9 /var/www/html/wp-load.php(50): require_once('/var/www/html/w...')
+#10 /var/www/html/wp-blog-header.php(13): require_once('/var/www/html/w...')
+#11 /var/www/html/index.php(17): require('/var/www/html/w...')
+#12 {main}
+  thrown in /var/www/html/wp-content/plugins/wp-gatsby/src/Admin/Settings.php on line 17
+[Sun Mar 09 05:51:07.595692 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00170: caught SIGWINCH, shutting down gracefully
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.19.0.3. Set the 'ServerName' directive globally to suppress this message
+[Sun Mar 09 05:51:37.383415 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Sun Mar 09 05:51:37.383547 2025] [core:notice] [pid 1:tid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Sun Mar 09 06:01:30.150697 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00170: caught SIGWINCH, shutting down gracefully
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.19.0.3. Set the 'ServerName' directive globally to suppress this message
+[Sun Mar 09 06:08:44.312714 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Sun Mar 09 06:08:44.312843 2025] [core:notice] [pid 1:tid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Sun Mar 09 06:26:10.941684 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00170: caught SIGWINCH, shutting down gracefully

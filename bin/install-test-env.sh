@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 
 # Source environment variables
-source .env || { echo "Error: .env file missing. Ensure it's in the project root."; exit 1; }
+source .env.dist || { echo "Error: .env file missing. Ensure it's in the project root."; exit 1; }
 
 # Configuration Section
 TMPDIR=${TMPDIR-/tmp}
 TMPDIR=$(echo "$TMPDIR" | sed -e "s/\/$//")
 DB_HOST=${TEST_DB_HOST-localhost}
+DB_USER=${DB_NAME}
+DB_NAME=${TEST_DB_NAME-localhost}
 DB_PASS=${TEST_DB_PASSWORD-""}
 WP_VERSION=${WP_VERSION-latest}
 WP_TESTS_DIR=${WP_TESTS_DIR-$TMPDIR/wordpress-tests-lib}

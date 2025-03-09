@@ -2,9 +2,10 @@
 
 namespace WPGatsby\ActionMonitor\Monitors;
 
-class NavMenuActionLogger
-{
+use WPGraphQL\GatsbyMonitor\Monitor;
 
+class NavMenuActionLogger extends Monitor
+{
     // ... (other methods and properties)
     /**
      * Log an action when a menu is updated.
