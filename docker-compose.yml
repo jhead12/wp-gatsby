@@ -1,68 +1,60 @@
-version: "2.8.6 " # Specify Docker Compose version
-
 services:
-  app_db:
+  app:
     depends_on:
-      - db
-    image: wordpress:beta-php8.3-fpm-alpine
+      - app_db
+    image: wpgatsby-app:latest
     volumes:
-      - .:/var/www/html/wp-content/plugins/wp-gatsby
-      - ./.log/app:/var/log/apache2
+      - '.:/var/www/html/wp-content/plugins/wp-gatsby'
+      - './.log/app:/var/log/apache2'
     environment:
-      WP_URL: http://localhost:8091
-      WP_DOMAIN: localhost:8091
-      WORDPRESS_DB_HOST: ${DB_HOST}
-      WORDPRESS_DB_NAME: ${DB_NAME}
-      WORDPRESS_DB_USER: ${DB_USER}
-      WORDPRESS_DB_PASSWORD: wordpress
+      WP_URL: 'http://localhost:8091'
+      WP_DOMAIN: 'localhost:8091'
+      DB_HOST: app_db
+      DB_NAME: wordpress
+      DB_USER: wordpress
+      DB_PASSWORD: wordpress
       ADMIN_EMAIL: admin@example.com
       ADMIN_USERNAME: admin
-      WORDPRESS_TABLE_PREFIX: ${WORDPRESS_TABLE_PREFIX}
       ADMIN_PASSWORD: password
-      WORDPRESS_DEBUG: ""
-      INCLUDE_WPGRAPHIQL: "1"
-      IMPORT_WC_PRODUCTS: "1"
-      STRIPE_GATEWAY: "1"
+      INCLUDE_WPGRAPHIQL: 1
+      IMPORT_WC_PRODUCTS: 1
+      STRIPE_GATEWAY: 1
     ports:
-      - "8091:80"
+      - '8091:80'
     networks:
-      - local
+      local:
 
-  db:
-    image: mysql:8.0
-    restart: always
+  app_db:
+    image: mysql:latest
     environment:
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-      MYSQL_RANDOM_ROOT_PASSWORD: "1"
-    volumes:
-      - db:/var/lib/mysql
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+    ports:
+      - '3306'
     networks:
-      - local
+      testing:
+      local:
 
   testing:
     depends_on:
       - app_db
-    image: wpgatsby-testing:local
+    image: wpgatsby-testing:latest
     volumes:
-      - .:/var/www/html/wp-content/plugins/wp-gatsby
-      - ./.log/testing:/var/log/apache2
-      - ./codeception.dist.yml:/var/www/html/wp-content/plugins/wp-gatsby/codeception.yml
-    env_file:
-      - .env.dist
+      - '.:/var/www/html/wp-content/plugins/wp-gatsby'
+      - './.log/testing:/var/log/apache2'
+      - './codeception.dist.yml:/var/www/html/wp-content/plugins/wp-gatsby/codeception.yml'
+    env_file: .env.dist
     environment:
-      XDEBUG_CONFIG: "remote_host=host.docker.internal remote_port=9000 remote_enable=1"
-      DB_HOST: db
-      WP_URL: http://localhost
-      WP_DOMAIN: localhost
-      STRIPE_GATEWAY: "1"
+      XDEBUG_CONFIG: remote_host=host.docker.internal remote_port=9000 remote_enable=1
+      DB_HOST: app_db
+      WP_URL: 'http://localhost'
+      WP_DOMAIN: 'localhost'
+      STRIPE_GATEWAY: 1
     networks:
-      - testing
+      testing:
 
 networks:
   local:
   testing:
-
-volumes:
-  db:

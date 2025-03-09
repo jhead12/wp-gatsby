@@ -10,7 +10,7 @@ ARG PHP_VERSION=8.3
 
 # Use a specific base image with the correct tag
 # FROM wordpress:${WP_VERSION}-php${PHP_VERSION}-alpine
-FROM wordpress:6.7.2-php8.3-fpm-alpin
+FROM wordpress:6.7.2-php8.3-fpm-alpine
 
 LABEL author=joshuahead
 LABEL author_uri=https://github.com/jhead12
