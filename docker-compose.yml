@@ -2,7 +2,7 @@ services:
   app:
     depends_on:
       - app_db
-    image: wpgatsby-app:latest
+    image: wordpress:beta-6.8-php8.3-apache
     volumes:
       - '.:/var/www/html/wp-content/plugins/wp-gatsby'
       - './.log/app:/var/log/apache2'

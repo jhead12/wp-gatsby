@@ -3,7 +3,7 @@
 ############################################################################
 
 # Using the 'DESIRED_' prefix to avoid confusion with environment variables of the same name.
-FROM wpgatsby-app:latest
+FROM wordpress:beta-6.8-php8.3-apache
 
 LABEL author=jasonbahl
 LABEL author_uri=https://github.com/jasonbahl

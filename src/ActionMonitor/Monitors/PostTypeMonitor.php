@@ -1,6 +1,6 @@
 <?php
 
-namespace ActionMonitor\Monitors;
+namespace WPGatsby\ActionMonitor\Monitors;
 
 class PostTypeMonitor {
     private $postTypes;

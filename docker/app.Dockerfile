@@ -10,7 +10,9 @@ ARG PHP_VERSION=8.3
 
 # Use a specific base image with the correct tag
 # FROM wordpress:${WP_VERSION}-php${PHP_VERSION}-alpine
-FROM wordpress:6.7.2-php8.3-fpm-alpine
+FROM wordpress:beta-6.8-php8.3-apache
+
+# FROM alpine:latest
 
 LABEL author=joshuahead
 LABEL author_uri=https://github.com/jhead12
@@ -41,10 +43,9 @@ RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
 
 # Set project environmental variables
 ENV WP_ROOT_FOLDER="/var/www/html"
-ENV WORDPRESS_DB_HOST=${DB_HOST}
-ENV WORDPRESS_DB_USER=${DB_USER}
-ENV WORDPRESS_DB_PASSWORD=${DB_PASSWORD}
-ENV WORDPRESS_DB_NAME=${DB_NAME}
+# ENV WORDPRESS_DB_HOST="${WORDPRESS_DB_HOST}"
+# ENV WORDPRESS_DB_PASSWORD="${WORDPRESS_DB_PASSWORD}"
+# ENV WORDPRESS_DB_NAME="${WORDPRESS_DB_NAME}"
 ENV PLUGINS_DIR="${WP_ROOT_FOLDER}/wp-content/plugins"
 ENV PROJECT_DIR="${PLUGINS_DIR}/wp-gatsby"
 
