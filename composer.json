@@ -12,11 +12,14 @@
     },
     {
       "name": "Tyler Barnes"
+    },
+    {
+      "name": "Joshua Head"
     }
   ],
   "autoload": {
     "psr-4": {
-      "WPGatsby\\": "src/"
+      "WPGatsby\\": "./src/"
     }
   },
   "autoload-dev": {
@@ -49,7 +52,7 @@
     "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
     "wp-coding-standards/wpcs": "2.1.1",
     "phpcompatibility/phpcompatibility-wp": "2.1.0",
-    "squizlabs/php_codesniffer": "3.5.4",
+    "squizlabs/php_codesniffer": "^3.11",
     "codeception/module-rest": "^1.2",
     "wp-graphql/wp-graphql-testcase": "^2.0.0",
     "phpunit/phpunit": "9.4.1"

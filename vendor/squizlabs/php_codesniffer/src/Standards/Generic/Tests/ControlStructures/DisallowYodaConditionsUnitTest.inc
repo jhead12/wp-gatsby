@@ -164,3 +164,24 @@ if ([function() { echo 'hi'; }] === [$foo]
 ) {
 }
 
+echo match (5 == $num) {
+    true => "true\n",
+    false => "false\n"
+};
+
+echo match ($text) {
+    'foo' => 10 === $y,
+    10 === $y => 'bar',
+};
+
+1 ?? $nullCoalescingShouldNotTriggerSniff;
+
+1 + 2 === $sniffBailsArithmeticToken;
+
+'string' . 'concat' === $sniffBailsStringConcatToken;
+
+1 != $value;
+1 <> $value;
+1 >= $value;
+1 <= $value;
+1 <=> $value;

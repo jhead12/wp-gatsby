@@ -3,17 +3,20 @@
 # Processes parameters and runs Codeception.
 run_tests() {
     echo "Running Tests"
+    local coverage=""
+    local debug=""
+
     if [[ -n "$COVERAGE" ]]; then
-        local coverage="--coverage --coverage-xml"
+        coverage="--coverage --coverage-xml"
     fi
     if [[ -n "$DEBUG" ]]; then
-        local debug="--debug"
+        debug="--debug"
     fi
 
     local suites=${1:-" ;"}
     IFS=';' read -ra target_suites <<< "$suites"
     for suite in "${target_suites[@]}"; do
-        vendor/bin/codecept run -c codeception.dist.yml ${suite} ${coverage:-} ${debug:-} --no-exit
+        vendor/bin/codecept run -c codeception.dist.yml ${suite} ${coverage} ${debug} --no-exit
     done
 }
 
@@ -63,12 +66,13 @@ if [ ! -f "$PROJECT_DIR/c3.php" ]; then
     curl -L 'https://raw.github.com/Codeception/c3/2.0/c3.php' > "$PROJECT_DIR/c3.php"
 fi
 
+local prefer_lowest=""
 if [[ -n "$LOWEST" ]]; then
-    PREFER_LOWEST="--prefer-source"
+    prefer_lowest="--prefer-source"
 fi
 
 # Install dependencies
-COMPOSER_MEMORY_LIMIT=-1 composer update --prefer-source ${PREFER_LOWEST}
+COMPOSER_MEMORY_LIMIT=-1 composer update --prefer-source ${prefer_lowest}
 COMPOSER_MEMORY_LIMIT=-1 composer install --prefer-source --no-interaction
 
 # Install pcov/clobber if PHP7.1+

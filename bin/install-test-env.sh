@@ -3,7 +3,7 @@
 source .env
 
 print_usage_instruction() {
-	echo "Ensure that .env file exist in project root directory exists."
+    echo "Ensure that .env file exists in project root directory."
 	echo "And run the following 'composer install-wp-tests' in the project root directory"
 	exit 1
 }
@@ -14,6 +14,7 @@ if [[ -z "$TEST_DB_NAME" ]]; then
 else
 	DB_NAME=$TEST_DB_NAME
 fi
+
 if [[ -z "$TEST_DB_USER" ]]; then
 	echo "TEST_DB_USER not found"
 	print_usage_instruction
@@ -66,8 +67,6 @@ else
 	fi
 	WP_TESTS_TAG="tags/$LATEST_VERSION"
 fi
-set -ex
-
 install_wp() {
 
 	if [ -d $WP_CORE_DIR ]; then
@@ -132,11 +131,23 @@ install_db() {
 		fi
 	fi
 
-	# create database
-	RESULT=`mysql -u $DB_USER --password="$DB_PASS" --skip-column-names -e "SHOW DATABASES LIKE '$DB_NAME'"$EXTRA`
-	if [ "$RESULT" != $DB_NAME ]; then
-			mysqladmin create $DB_NAME --user="$DB_USER" --password="$DB_PASS"$EXTRA
-	fi
+# Define variables
+DB_USER="root"
+DB_PASS="root"
+DB_NAME="local"
+SOCKET="/Users/jeldonmusic/Library/Application Support/Local/run/9y4Cqcsm2/mysql/mysqld.sock"
+
+# Check if mysqld process is running using the specified socket
+if ! pgrep -f "mysqld.*$SOCKET" > /dev/null; then
+    echo "MySQL server is not running with the specified socket."
+    exit 1
+fi
+
+# Create database if it doesn't exist
+RESULT=$(mysql -u $DB_USER --password="$DB_PASS" --socket=$SOCKET --skip-column-names -e "SHOW DATABASES LIKE '$DB_NAME'")
+if [ "$RESULT" != "$DB_NAME" ]; then
+    mysqladmin create $DB_NAME --user="$DB_USER" --password="$DB_PASS" --socket=$SOCKET
+fi
 }
 
 configure_wordpress() {

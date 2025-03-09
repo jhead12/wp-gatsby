@@ -6,7 +6,7 @@
 set +u
 
 # Ensure mysql is loaded
-dockerize -wait tcp://${DB_HOST}:${DB_HOST_PORT:-3306} -timeout 1m
+dockerize -wait tcp://${DB_HOST}:${DB_HOST_PORT:-3306} -timeout 1m || exit 1
 
 # Config WordPress
 if [ ! -f "${WP_ROOT_FOLDER}/wp-config.php" ]; then
@@ -19,26 +19,26 @@ if [ ! -f "${WP_ROOT_FOLDER}/wp-config.php" ]; then
         --dbprefix="${WP_TABLE_PREFIX}" \
         --skip-check \
         --quiet \
-        --allow-root
+        --allow-root || exit 1
 fi
 
 # Install WP if not yet installed
-if ! $( wp core is-installed --allow-root ); then
-	wp core install \
-		--path="${WP_ROOT_FOLDER}" \
-		--url="${WP_URL}" \
-		--title='Test' \
-		--admin_user="${ADMIN_USERNAME}" \
-		--admin_password="${ADMIN_PASSWORD}" \
-		--admin_email="${ADMIN_EMAIL}" \
-		--allow-root
+if ! wp core is-installed --allow-root; then
+    wp core install \
+        --path="${WP_ROOT_FOLDER}" \
+        --url="${WP_URL}" \
+        --title='Test' \
+        --admin_user="${ADMIN_USERNAME}" \
+        --admin_password="${ADMIN_PASSWORD}" \
+        --admin_email="${ADMIN_EMAIL}" \
+        --allow-root || exit 1
 fi
 
 # Install and activate WPGraphQL
 if [ ! -f "${PLUGINS_DIR}/wp-graphql/wp-graphql.php" ]; then
     wp plugin install \
         https://github.com/wp-graphql/wp-graphql/archive/${WPGRAPHQL_VERSION}.zip \
-        --activate --allow-root
+        --activate --allow-root || exit 1
 else
     wp plugin activate wp-graphql --allow-root
 fi
@@ -49,6 +49,6 @@ wp plugin activate wp-gatsby --allow-root
 # Set pretty permalinks.
 wp rewrite structure '/%year%/%monthnum%/%postname%/' --allow-root
 
-wp db export "${PROJECT_DIR}/tests/_data/dump.sql" --allow-root
+wp db export "${PROJECT_DIR}/tests/_data/dump.sql" --allow-root || exit 1
 
 exec "$@"

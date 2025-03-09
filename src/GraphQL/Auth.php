@@ -5,32 +5,46 @@ namespace WPGatsby\GraphQL;
 use Firebase\JWT\JWT;
 use WPGatsby\Admin\Settings;
 
-class Auth {
+/**
+ * Class for authentication.
+ *
+ * @category WPGatsby
+ * @package  WPGatsby\GraphQL
+ * @author   Your Name <your.email@example.com>
+ * @license  MIT License <https://opensource.org/licenses/MIT>
+ * @link     https://github.com/yourusername/wpgatsby-graphql
+ */
+class Auth
+{
     const TOKEN_EXPIRY_SECONDS = 3600; // Token expires in 1 hour
-
     /**
      * Generate a JSON Web Token (JWT) for authentication.
      *
      * @return string JWT token
      */
-    public static function get_token() {
-        $site_url = self::get_site_url();
-        $secret   = self::get_jwt_secret();
-        $user_id  = self::get_current_user_id();
+    public static function getToken()
+    {
+        $siteUrl = self::getSiteUrl();
+        $secret   = self::getJwtSecret();
+        $userId  = self::getCurrentUserId();
+        $siteUrl = self::_getSiteUrl();
+        $secret   = self::_getJwtSecret();
+        $userId  = self::_getCurrentUserId();
 
         // Validate required values
-        if (empty($site_url) || empty($secret) || empty($user_id)) {
+        if (empty($siteUrl) || empty($secret) || empty($userId)) {
             throw new \Exception('Invalid configuration for JWT generation.');
         }
 
         $payload = [
-            'iss'  => $site_url,
-            'aud'  => $site_url,
+            'iss'  => $siteUrl,
+            'aud'  => $siteUrl,
             'iat'  => time(),
             'nbf'  => time(),
-            'exp'  => self::get_token_expiry_time(),
+            'exp'  => self::getTokenExpiryTime(),
+            'exp'  => self::_getTokenExpiryTime(),
             'data' => [
-                'user_id' => $user_id,
+                'user_id' => $userId,
             ],
         ];
 
@@ -42,7 +56,9 @@ class Auth {
      *
      * @return string Site URL
      */
-    private static function get_site_url() {
+    private static function getSiteUrl()
+    private static function _getSiteUrl()
+    {
         return get_bloginfo('url');
     }
 
@@ -51,7 +67,9 @@ class Auth {
      *
      * @return string JWT secret
      */
-    private static function get_jwt_secret() {
+    private static function getJwtSecret()
+    private static function _getJwtSecret()
+    {
         return Settings::get_setting('preview_jwt_secret');
     }
 
@@ -60,7 +78,9 @@ class Auth {
      *
      * @return int User ID
      */
-    private static function get_current_user_id() {
+    private static function getCurrentUserId()
+    private static function _getCurrentUserId()
+    {
         return get_current_user_id();
     }
 
@@ -69,7 +89,10 @@ class Auth {
      *
      * @return int Expiry time in seconds since epoch
      */
-    private static function get_token_expiry_time() {
+    private static function getTokenExpiryTime()
+    private static function _getTokenExpiryTime()
+    {
         return time() + self::TOKEN_EXPIRY_SECONDS;
     }
+}
 }
