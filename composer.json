@@ -50,7 +50,8 @@
     "firebase/php-jwt": "^5.2",
     "ircmaxell/random-lib": "^1.2",
 
-    "composer/semver": "^1.5"
+    "composer/semver": "^1.5",
+    "symfony/yaml": "^5.4"
   },
   "require-dev": {
     "lucatume/wp-browser": "^2.4",

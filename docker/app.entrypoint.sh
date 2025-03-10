@@ -1,17 +1,15 @@
 #!/bin/bash
 
-# Run WordPress docker entrypoint.
-. docker-entrypoint.sh 'apache2'
+# Load WordPress docker entrypoint
+. app-entrypoint.sh 'apache2'
 
 set +u
 
-# Ensure MySQL is loaded.
+# Ensure MySQL is running
 dockerize -wait tcp://${DB_HOST}:${DB_HOST_PORT:-3306} -timeout 1m || exit 1
-
 echo "MySQL service is up and running."
 
-# Config WordPress.
-if [ ! -f "${WP_ROOT_FOLDER}/wp-config.php" ]; then
+configure_wp() {
     echo "Creating wp-config.php file."
     wp config create \
         --path="${WP_ROOT_FOLDER}" \
@@ -24,10 +22,9 @@ if [ ! -f "${WP_ROOT_FOLDER}/wp-config.php" ]; then
         --quiet \
         --allow-root || exit 1
     echo "wp-config.php file created."
-fi
+}
 
-# Install WP if not yet installed.
-if ! wp core is-installed --allow-root; then
+install_wp() {
     echo "Installing WordPress core."
     wp core install \
         --path="${WP_ROOT_FOLDER}" \
@@ -38,61 +35,82 @@ if ! wp core is-installed --allow-root; then
         --admin_email="${ADMIN_EMAIL}" \
         --allow-root || exit 1
     echo "WordPress core installed."
+}
+
+install_plugin() {
+    local plugin_url=$1
+    local plugin_name=$2
+    echo "Installing $plugin_name plugin."
+    wp plugin install $plugin_url --allow-root || exit 1
+    echo "$plugin_name plugin installed."
+}
+
+activate_plugin() {
+    local plugin_name=$1
+    echo "Activating $plugin_name plugin."
+    wp plugin activate $plugin_name --allow-root || exit 1
+    echo "$plugin_name plugin activated."
+}
+
+test_graphql() {
+    echo "Testing WPGraphQL functionality..."
+    GRAPHQL_QUERY_RESULT=$(curl -s -o /dev/null -w "%{http_code}" "${WP_URL}/graphql")
+    if [[ "$GRAPHQL_QUERY_RESULT" -eq 200 ]]; then
+        echo "GraphQL endpoint is responding correctly."
+    else
+        echo "Error: GraphQL endpoint is not responding. Please check your setup."
+        exit 1
+    fi
+}
+
+set_pretty_permalinks() {
+    echo "Setting pretty permalinks structure."
+    wp rewrite structure '/%year%/%monthnum%/%postname%/' --allow-root || exit 1
+    echo "Pretty permalinks set."
+}
+
+export_db() {
+    echo "Exporting the database to ${PROJECT_DIR}/tests/_data/dump.sql"
+    wp db export "${PROJECT_DIR}/tests/_data/dump.sql" --allow-root || exit 1
+    echo "Database exported successfully."
+}
+
+# Configure WordPress
+if [ ! -f "${WP_ROOT_FOLDER}/wp-config.php" ]; then
+    configure_wp
 fi
 
-# Install and activate WPGraphQL.
-if [ ! -f "${PLUGINS_DIR}/wp-graphql/wp-graphql.php" ]; then
-    echo "Installing and activating WPGraphQL plugin from version ${WPGRAPHQL_VERSION}."
-    wp plugin install \
-        https://github.com/wp-graphql/wp-graphql/archive/${WPGRAPHQL_VERSION}.zip \
-        --activate --allow-root || exit 1
-    echo "WPGraphQL plugin installed and activated."
+# Install WordPress if not already installed
+if ! wp core is-installed --allow-root; then
+    install_wp
+fi
+
+# Install and activate WPGraphQL
+if ! wp plugin is-installed wp-graphql --allow-root; then
+    install_plugin "https://github.com/wp-graphql/wp-graphql/archive/${WPGRAPHQL_VERSION}.zip" "WPGraphQL"
+fi
+
+if ! wp plugin is-active wp-graphql --allow-root; then
+    activate_plugin "wp-graphql"
 else
-    echo "Activating WPGraphQL plugin."
-    wp plugin activate wp-graphql --allow-root
-    echo "WPGraphQL plugin activated."
+    echo "WPGraphQL is already active."
 fi
 
-# Install and activate WPGatsby.
-echo "Activating WPGatsby plugin."
-wp plugin activate wp-gatsby --allow-root
-echo "WPGatsby plugin activated."
+# Test WPGraphQL functionality
+test_graphql
 
-# Set pretty permalinks.
-echo "Setting pretty permalinks structure."
-wp rewrite structure '/%year%/%monthnum%/%postname%/' --allow-root || exit 1
-echo "Pretty permalinks set."
-
-# Export the database.
-echo "Exporting the database to ${PROJECT_DIR}/tests/_data/dump.sql"
-wp db export "${PROJECT_DIR}/tests/_data/dump.sql" --allow-root || exit 1
-echo "Database exported successfully."
-
-# Add test logic to verify functionality.
-echo "Running WP-CLI test to verify functionality."
-if wp core is-installed --allow-root; then
-
-    echo "WordPress installation verified successfully."
+# Install and activate WPGatsby
+if ! wp plugin is-active wp-gatsby --allow-root; then
+    activate_plugin "wp-gatsby"
 else
-    echo "Error: WordPress installation verification failed."
-    exit 1
+    echo "WPGatsby is already active."
 fi
 
-if wp plugin is-active wp-graphql --allow-root; then
-    composer require wpackagist-plugin/wp-graphql
+# Set pretty permalinks
+set_pretty_permalinks
 
-    echo "WPGraphQL plugin is active."
-else
-    echo "Error: WPGraphQL plugin is not active."
-    exit 1
-fi
+# Export the database
+export_db
 
-if wp plugin is-active wp-gatsby --allow-root; then
-    echo "WPGatsby plugin is active."
-else
-    echo "Error: WPGatsby plugin is not active."
-    exit 1
-fi
-
-# Proceed with command execution.
+# Proceed with command execution
 exec "$@"

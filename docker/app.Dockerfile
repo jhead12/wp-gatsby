@@ -54,8 +54,8 @@ COPY docker/app.entrypoint.sh /usr/local/bin/app-entrypoint.sh
 RUN chmod 755 /usr/local/bin/app-entrypoint.sh
 
 # Set up Apache
-RUN echo 'ServerName localhost' >> /etc/apache2/apache2.conf
+RUN echo 'WPGraphQL localhost' >> /etc/apache2/apache2.conf
 
 # Set up entrypoint
 ENTRYPOINT ["app-entrypoint.sh"]
-CMD ["apache2-foreground"]
+# CMD ["apache2-foreground"]

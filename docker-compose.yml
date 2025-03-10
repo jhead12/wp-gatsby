@@ -4,11 +4,11 @@ services:
       - app_db
     image: wordpress:beta-6.8-php8.3-apache
     volumes:
-      - '.:/var/www/html/wp-content/plugins/wp-gatsby'
-      - './.log/app:/var/log/apache2'
+      - .:/var/www/html/wp-content/plugins/wp-gatsby
+      - ./.log/app:/var/log/apache2
     environment:
-      WP_URL: 'http://localhost:8091'
-      WP_DOMAIN: 'localhost:8091'
+      WP_URL: http://localhost:8091
+      WP_DOMAIN: localhost:8091
       DB_HOST: app_db
       DB_NAME: wordpress
       DB_USER: wordpress
@@ -19,10 +19,11 @@ services:
       INCLUDE_WPGRAPHIQL: 1
       IMPORT_WC_PRODUCTS: 1
       STRIPE_GATEWAY: 1
+      WPGRAPHQL_VERSION: 2.0
     ports:
-      - '8091:80'
+      - 8091:80
     networks:
-      local:
+      - local
 
   app_db:
     image: mysql:latest
@@ -32,28 +33,29 @@ services:
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: wordpress
     ports:
-      - '3306'
+      - 3306:3306
     networks:
-      testing:
-      local:
+      - testing
+      - local
 
   testing:
     depends_on:
       - app_db
     image: wpgatsby-testing:latest
     volumes:
-      - '.:/var/www/html/wp-content/plugins/wp-gatsby'
-      - './.log/testing:/var/log/apache2'
-      - './codeception.dist.yml:/var/www/html/wp-content/plugins/wp-gatsby/codeception.yml'
+      - .:/var/www/html/wp-content/plugins/wp-gatsby
+      - ./.log/testing:/var/log/apache2
+      - ./codeception.dist.yml:/var/www/html/wp-content/plugins/wp-gatsby/codeception.yml
     env_file: .env.dist
     environment:
       XDEBUG_CONFIG: remote_host=host.docker.internal remote_port=9000 remote_enable=1
       DB_HOST: app_db
-      WP_URL: 'http://localhost'
-      WP_DOMAIN: 'localhost'
+      WP_URL: http://localhost
+      WP_DOMAIN: localhost
       STRIPE_GATEWAY: 1
+      WPGRAPHQL_VERSION: 2.0
     networks:
-      testing:
+      - testing
 
 networks:
   local:
