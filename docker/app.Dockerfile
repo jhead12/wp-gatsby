@@ -36,26 +36,21 @@ RUN curl -L "https://github.com/jwilder/dockerize/releases/download/${DOCKERIZE_
     && chmod +x /usr/local/bin/dockerize
 
 # Install WP-CLI
-RUN curl -s -o /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
-    && chmod +x /usr/local/bin/wp
+RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+RUN chmod +x wp-cli.phar
+RUN mv wp-cli.phar /usr/local/bin/wp
 
-
-# Set project environmental variables
-# ENV WP_ROOT_FOLDER="/var/www/html"
-# ENV WORDPRESS_DB_HOST="${WORDPRESS_DB_HOST}"
-# ENV WORDPRESS_DB_PASSWORD="${WORDPRESS_DB_PASSWORD}"
-# ENV WORDPRESS_DB_NAME="${WORDPRESS_DB_NAME}"
-# ENV PLUGINS_DIR="${WP_ROOT_FOLDER}/wp-content/plugins"
-# ENV PROJECT_DIR="${PLUGINS_DIR}/wp-gatsby"
-
-# Remove exec statement from base entrypoint script.
 WORKDIR /var/www/html
-COPY docker/app.entrypoint.sh /usr/local/bin/app-entrypoint.sh
-RUN chmod 755 /usr/local/bin/app-entrypoint.sh
+
+RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+RUN chmod +x wp-cli.phar
+RUN mv wp-cli.phar /usr/local/bin/wp
+
+
 
 # Set up Apache
 RUN echo 'WPGraphQL localhost' >> /etc/apache2/apache2.conf
 
 # Set up entrypoint
 ENTRYPOINT ["app-entrypoint.sh"]
-# CMD ["apache2-foreground"]
+CMD ["apache2-foreground"]

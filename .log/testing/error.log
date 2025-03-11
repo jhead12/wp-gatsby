@@ -132,3 +132,370 @@
 [Sun Mar 09 12:38:31.635549 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
 [Sun Mar 09 12:41:40.273141 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
 [Sun Mar 09 12:41:40.275657 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 07:24:35.757122 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 07:24:35.757909 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 07:27:54.496646 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 07:27:54.497431 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 07:28:48.789774 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 07:28:48.790017 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 07:29:12.459497 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 07:29:12.459608 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 07:31:31.550308 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 07:31:31.550603 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 07:31:34.263487 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:31:35.275599 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:31:36.282097 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:31:37.289095 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:31:38.296305 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:31:39.308264 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:31:40.315076 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:31:41.328372 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:31:42.339453 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:31:43.349359 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:31:44.357596 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:31:45.368692 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:31:46.383699 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:31:47.391396 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:31:48.399971 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:31:49.411744 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:31:50.422062 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:31:51.432039 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:31:52.440805 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:31:53.457474 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:31:54.464461 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:31:55.472912 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:31:56.475308 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:31:57.478868 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:31:58.245717 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 07:31:58.245827 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 07:31:58.490027 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:31:59.494391 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:00.504747 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:00.800060 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:48990] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:01.516511 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:01.814693 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:48990] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:02.527485 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:02.821234 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:48990] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:03.534365 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:03.828456 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:48990] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:04.545460 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:04.839222 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:48990] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:05.554839 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:05.848488 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:48990] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:06.563247 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:06.859023 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:48990] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:07.572189 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:07.867805 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:48990] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:08.578889 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:08.876209 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:48990] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:09.585214 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:09.887121 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:48990] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:10.594635 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:10.893133 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:48990] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:11.598708 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:11.904160 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:48990] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:12.609213 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:12.912551 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:48990] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:13.619628 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:13.922995 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:48990] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:14.626695 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:14.930970 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:48990] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:15.636758 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:15.941336 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:48990] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:16.642116 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:16.947688 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:48990] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:17.646787 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:17.952898 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:48990] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:18.654141 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:18.960967 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:48990] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:19.662874 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:19.964287 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:48990] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:20.668034 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:20.973943 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:48990] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:21.673261 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:21.983379 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:48990] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:22.678144 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:22.993824 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:48990] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:23.686045 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:24.001192 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:48990] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:24.692792 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:25.007074 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:48990] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:25.700034 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:26.014103 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:48990] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:26.708399 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:27.716945 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:28.722859 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:29.731402 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:30.742108 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:31.756657 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:32.764253 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:33.771254 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:56284] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:53.943791 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 07:32:53.943961 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 07:32:55.932033 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:56.938130 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:57.942564 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:58.946550 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:32:59.950711 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:00.954870 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:01.961338 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:02.967428 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:03.975353 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:04.314346 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 07:33:04.314548 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 07:33:04.983848 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:05.994957 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:06.793602 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:45028] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:06.999086 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:07.808998 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:45028] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:08.014099 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:08.821141 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:45028] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:09.020074 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:09.833603 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:45028] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:10.030093 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:10.843821 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:45028] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:11.034410 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:11.851335 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:45028] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:12.045468 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:12.861549 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:45028] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:13.054464 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:13.867914 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:45028] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:14.064742 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:14.877324 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:45028] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:15.069787 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:15.883611 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:45028] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:16.080262 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:16.890057 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:45028] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:17.089765 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:17.897938 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:45028] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:18.099207 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:18.904267 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:45028] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:19.102136 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:19.912443 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:45028] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:20.114756 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:20.921562 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:45028] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:21.119631 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:21.934200 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:45028] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:22.129618 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:22.945146 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:45028] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:23.139142 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:24.149728 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:25.158921 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:26.170313 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:27.177397 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:28.185760 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:29.195970 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:30.208944 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:31.218467 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:32.225015 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:33.238757 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:34.251892 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:35.258501 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:36.265624 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:37.272224 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:38.280407 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:39.284510 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:40.293312 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:41.305202 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:42.315154 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:43.323270 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:44.329760 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:45.335587 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:46.346001 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:47.352564 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:48.363578 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:49.375431 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:50.382046 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:51.391441 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:52.395809 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:53.402778 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:54.412215 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:33:55.417062 2025] [autoindex:error] [pid 26:tid 26] [client 127.0.0.1:57706] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Mon Mar 10 07:34:57.522851 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 07:34:57.523162 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 07:36:15.291463 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 07:36:15.291743 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 07:36:44.183409 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 07:36:44.183629 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 07:39:32.138056 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 07:39:32.138452 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 07:41:32.928567 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 07:41:32.928944 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 07:43:32.736758 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 07:43:32.737138 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 07:44:08.105646 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 07:44:08.105911 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 07:46:51.227362 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 07:46:51.227842 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 07:52:05.956107 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 07:52:05.956538 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 07:54:48.290381 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 07:54:48.290907 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 08:18:38.942176 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 08:18:38.942740 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 08:36:44.099588 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 08:36:44.102580 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 08:42:18.422333 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 08:42:18.422592 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 08:47:45.901670 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 08:47:45.901923 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 08:58:23.340980 2025] [mpm_prefork:notice] [pid 22:tid 22] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 08:58:23.341521 2025] [core:notice] [pid 22:tid 22] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 09:21:52.561481 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 09:21:52.562448 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 09:23:16.198254 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 09:23:16.198765 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 09:27:57.924257 2025] [mpm_prefork:notice] [pid 22:tid 22] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 09:27:57.924624 2025] [core:notice] [pid 22:tid 22] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 09:32:17.316843 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 09:32:17.325347 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 09:38:50.866345 2025] [core:warn] [pid 25:tid 25] AH00098: pid file /var/run/apache2/apache2.pid overwritten -- Unclean shutdown of previous Apache run?
+[Mon Mar 10 09:38:50.875847 2025] [mpm_prefork:notice] [pid 25:tid 25] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 09:38:50.875958 2025] [core:notice] [pid 25:tid 25] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 09:39:10.818910 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 09:39:10.819395 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 09:43:05.930903 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 09:43:05.931613 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 09:50:20.187897 2025] [core:warn] [pid 25:tid 25] AH00098: pid file /var/run/apache2/apache2.pid overwritten -- Unclean shutdown of previous Apache run?
+[Mon Mar 10 09:50:20.198043 2025] [mpm_prefork:notice] [pid 25:tid 25] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 09:50:20.198215 2025] [core:notice] [pid 25:tid 25] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 09:51:36.980666 2025] [core:warn] [pid 25:tid 25] AH00098: pid file /var/run/apache2/apache2.pid overwritten -- Unclean shutdown of previous Apache run?
+[Mon Mar 10 09:51:36.983248 2025] [mpm_prefork:notice] [pid 25:tid 25] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 09:51:36.983460 2025] [core:notice] [pid 25:tid 25] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 09:53:41.217255 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 09:53:41.217660 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 09:57:57.249601 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 09:57:57.250062 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 10:01:19.962999 2025] [core:warn] [pid 24:tid 24] AH00098: pid file /var/run/apache2/apache2.pid overwritten -- Unclean shutdown of previous Apache run?
+[Mon Mar 10 10:01:19.965830 2025] [mpm_prefork:notice] [pid 24:tid 24] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 10:01:19.965971 2025] [core:notice] [pid 24:tid 24] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 10:14:38.440509 2025] [core:warn] [pid 25:tid 25] AH00098: pid file /var/run/apache2/apache2.pid overwritten -- Unclean shutdown of previous Apache run?
+[Mon Mar 10 10:14:38.443799 2025] [mpm_prefork:notice] [pid 25:tid 25] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 10:14:38.443895 2025] [core:notice] [pid 25:tid 25] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 10:25:32.540194 2025] [core:warn] [pid 25:tid 25] AH00098: pid file /var/run/apache2/apache2.pid overwritten -- Unclean shutdown of previous Apache run?
+[Mon Mar 10 10:25:32.547368 2025] [mpm_prefork:notice] [pid 25:tid 25] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 10:25:32.547519 2025] [core:notice] [pid 25:tid 25] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 10:25:51.525645 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 10:25:51.525791 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 10:30:35.188617 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 10:30:35.189714 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 10:34:18.276505 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 10:34:18.279722 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 10:38:37.914800 2025] [mpm_prefork:notice] [pid 22:tid 22] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 10:38:37.915304 2025] [core:notice] [pid 22:tid 22] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 10:42:53.615718 2025] [core:warn] [pid 25:tid 25] AH00098: pid file /var/run/apache2/apache2.pid overwritten -- Unclean shutdown of previous Apache run?
+[Mon Mar 10 10:42:53.620973 2025] [mpm_prefork:notice] [pid 25:tid 25] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 10:42:53.621096 2025] [core:notice] [pid 25:tid 25] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 10:59:39.780119 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 10:59:39.780401 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 11:30:47.768825 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 11:30:47.769211 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 11:36:05.427010 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 11:36:05.428587 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 11:38:04.663563 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 11:38:04.668275 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 11:39:53.032306 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 11:39:53.032869 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 11:42:07.151361 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 11:42:07.151811 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 11:42:37.583889 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 11:42:37.585652 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 11:43:41.213681 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 11:43:41.214123 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 11:45:31.920660 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 11:45:31.921431 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 11:46:02.735653 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 11:46:02.735893 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 11:58:18.808292 2025] [mpm_prefork:notice] [pid 230:tid 230] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 11:58:18.808526 2025] [core:notice] [pid 230:tid 230] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 12:00:03.120479 2025] [mpm_prefork:notice] [pid 233:tid 233] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 12:00:03.120743 2025] [core:notice] [pid 233:tid 233] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 12:03:31.591719 2025] [mpm_prefork:notice] [pid 231:tid 231] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 12:03:31.592155 2025] [core:notice] [pid 231:tid 231] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 12:05:59.284865 2025] [mpm_prefork:notice] [pid 228:tid 228] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 12:05:59.285257 2025] [core:notice] [pid 228:tid 228] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 12:11:00.404836 2025] [mpm_prefork:notice] [pid 227:tid 227] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 12:11:00.405222 2025] [core:notice] [pid 227:tid 227] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 12:18:11.561639 2025] [mpm_prefork:notice] [pid 231:tid 231] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 12:18:11.561753 2025] [core:notice] [pid 231:tid 231] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 12:23:34.035776 2025] [mpm_prefork:notice] [pid 231:tid 231] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 12:23:34.039974 2025] [core:notice] [pid 231:tid 231] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 12:25:47.937234 2025] [mpm_prefork:notice] [pid 233:tid 233] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 12:25:47.938053 2025] [core:notice] [pid 233:tid 233] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 21:21:03.466917 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 21:21:03.467343 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 21:36:59.863423 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 21:36:59.863849 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 21:44:33.689554 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 21:44:33.689879 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 22:07:17.821081 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 22:07:17.821503 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 22:10:27.833275 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 22:10:27.834236 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 22:11:06.169527 2025] [mpm_prefork:notice] [pid 22:tid 22] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 22:11:06.169808 2025] [core:notice] [pid 22:tid 22] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 22:16:10.720965 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 22:16:10.721433 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 23:05:25.036806 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 23:05:25.037064 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 23:32:07.890399 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 23:32:07.892659 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 23:33:15.858213 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 23:33:15.859833 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 23:38:18.987578 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 23:38:18.992109 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 23:44:12.532809 2025] [mpm_prefork:notice] [pid 22:tid 22] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 23:44:12.533274 2025] [core:notice] [pid 22:tid 22] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 23:47:11.824065 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 23:47:11.824735 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 23:49:42.870578 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 23:49:42.871241 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 23:50:58.267194 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 23:50:58.267469 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 23:51:44.493223 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 23:51:44.493688 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Mar 10 23:53:04.888990 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Mon Mar 10 23:53:04.889185 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Tue Mar 11 00:01:35.306702 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Tue Mar 11 00:01:35.307055 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Tue Mar 11 00:03:07.548852 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Tue Mar 11 00:03:07.550107 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Tue Mar 11 00:11:42.898881 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Tue Mar 11 00:11:42.902670 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Tue Mar 11 01:44:06.973444 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Tue Mar 11 01:44:06.974130 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Tue Mar 11 01:46:30.755585 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Tue Mar 11 01:46:30.756110 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Tue Mar 11 01:48:52.227887 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Tue Mar 11 01:48:52.228604 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Tue Mar 11 01:50:17.922525 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Tue Mar 11 01:50:17.923134 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Tue Mar 11 01:59:24.471451 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Tue Mar 11 01:59:24.472224 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Tue Mar 11 02:03:00.843855 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Tue Mar 11 02:03:00.844239 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Tue Mar 11 02:03:56.954197 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Tue Mar 11 02:03:56.954431 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Tue Mar 11 02:14:04.459177 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Tue Mar 11 02:14:04.459668 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Tue Mar 11 02:31:08.192651 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Tue Mar 11 02:31:08.193589 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Tue Mar 11 03:04:25.747445 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Tue Mar 11 03:04:25.748487 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Tue Mar 11 04:11:54.840060 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Tue Mar 11 04:11:54.840395 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Tue Mar 11 04:34:01.262602 2025] [mpm_prefork:notice] [pid 24:tid 24] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Tue Mar 11 04:34:01.262824 2025] [core:notice] [pid 24:tid 24] AH00094: Command line: '/usr/sbin/apache2'
+[Tue Mar 11 05:16:26.247913 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Tue Mar 11 05:16:26.248963 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Tue Mar 11 06:49:57.487083 2025] [core:warn] [pid 25:tid 25] AH00098: pid file /var/run/apache2/apache2.pid overwritten -- Unclean shutdown of previous Apache run?
+[Tue Mar 11 06:49:57.498685 2025] [mpm_prefork:notice] [pid 25:tid 25] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Tue Mar 11 06:49:57.498821 2025] [core:notice] [pid 25:tid 25] AH00094: Command line: '/usr/sbin/apache2'
+[Tue Mar 11 07:27:40.160834 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Tue Mar 11 07:27:40.161665 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Tue Mar 11 07:36:35.300651 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Tue Mar 11 07:36:35.302254 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Tue Mar 11 07:42:34.655861 2025] [mpm_prefork:notice] [pid 23:tid 23] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Tue Mar 11 07:42:34.656248 2025] [core:notice] [pid 23:tid 23] AH00094: Command line: '/usr/sbin/apache2'
+[Tue Mar 11 08:07:29.480637 2025] [mpm_prefork:notice] [pid 22:tid 22] AH00163: Apache/2.4.62 (Debian) PHP/8.3.17 configured -- resuming normal operations
+[Tue Mar 11 08:07:29.482067 2025] [core:notice] [pid 22:tid 22] AH00094: Command line: '/usr/sbin/apache2'

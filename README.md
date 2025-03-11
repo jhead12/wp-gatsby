@@ -59,10 +59,7 @@ To build and run the Docker containers for your WordPress and Gatsby environment
 
 3. Log into the Terminal of the App Container:
 
-    ```bash
-    ssh root@localhost -p 2022
-    ```
-
+ 
 4. Access the WordPress container shell:
 
     ```bash
@@ -74,6 +71,13 @@ To build and run the Docker containers for your WordPress and Gatsby environment
     ```bash
     docker ps
     ```
+
+    # List all containers (stopped and running)
+docker ps -a
+
+# Remove a stopped container by its ID
+docker rm <container_id>
+
 
 ## Environmental Variables
 

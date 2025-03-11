@@ -23,6 +23,7 @@ print_usage_instructions() {
     echo "Usage: composer build-and-run -- [-a|-t]"
     echo "       -a  Spin up a WordPress installation."
     echo "       -t  Run the automated tests."
+    echo "       composer test"
     exit 1
 }
 
@@ -87,6 +88,20 @@ run_containers() {
     esac
 }
 
+# Function to run tests
+run_tests() {
+    local env_file="$1"
+    source "$env_file"
+    echo "Running automated tests with environment file: $env_file"
+    docker-compose run --rm \
+        -e SUITES=${SUITES:-wpunit} \
+        -e COVERAGE=${COVERAGE:-} \
+        -e DEBUG=${DEBUG:-} \
+        -e SKIP_TESTS_CLEANUP=${SKIP_TESTS_CLEANUP:-} \
+        -e LOWEST=${LOWEST:-} \
+        testing --scale app=0
+}
+
 main() {
     check_docker
     check_docker_daemon
@@ -116,6 +131,16 @@ main() {
                 esac
             done
             shift $((OPTIND - 1))
+            ;;
+        "test")
+            while getopts "e:" opt; do
+                case $opt in
+                    e)
+                        env_file=${OPTARG}
+                        ;;
+                esac
+            done
+            run_tests "$env_file"
             ;;
         *)
             print_usage_instructions

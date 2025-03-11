@@ -4,9 +4,9 @@ namespace WPGatsby\ActionMonitor\Monitors;
 use GraphQLRelay\Relay;
 use WPGraphQL\GatsbyMonitor\ActionMonitorPreview as Preview;
 use WPGraphQL\GatsbyMonitor\ActionMonitorAction as Action;
-abstract class Monitor {
+abstract class Monitor
+{
     /**
-
     /**
      * The ActionMonitor instance.
      *
@@ -21,7 +21,8 @@ abstract class Monitor {
      */
     protected $ignored_ids = [];
 
-    public function __construct() {
+    public function __construct()
+    {
         // Nothing to do here for now
     }
 
@@ -33,7 +34,8 @@ abstract class Monitor {
      *
      * @param array $args Optional args to add to the action
      */
-    public function trigger_schema_diff( $args = [] ) {
+    public function trigger_schema_diff( $args = [] )
+    {
         $default = [
         'title'               => __('Diff schemas', 'WPGatsby'),
         'node_id'             => 'none',
@@ -55,15 +57,15 @@ abstract class Monitor {
      *
      * @param array $args Array of arguments to configure the action to be inserted
      */
-    public function log_action( array $args ) {
-        if (
-            !isset($args['action_type']) ||
-            !isset($args['title']) ||
-            !isset($args['node_id']) ||
-            !isset($args['relay_id']) ||
-            !isset($args['graphql_single_name']) ||
-            !isset($args['graphql_plural_name']) ||
-            !isset($args['status'])
+    public function log_action( array $args )
+    {
+        if (!isset($args['action_type']) 
+            || !isset($args['title']) 
+            || !isset($args['node_id']) 
+            || !isset($args['relay_id']) 
+            || !isset($args['graphql_single_name']) 
+            || !isset($args['graphql_plural_name']) 
+            || !isset($args['status'])
         ) {
             // Log error or throw exception for better debugging
             return;
@@ -105,7 +107,8 @@ abstract class Monitor {
         $is_preview_stream = $stream_type === 'PREVIEW';
 
         // Check to see if an action already exists for this node type/database id
-        $existing = new \WP_Query([
+        $existing = new \WP_Query(
+            [
             'post_type'      => 'action_monitor',
             'post_status'    => 'any',
             'posts_per_page' => 1,
@@ -129,7 +132,8 @@ abstract class Monitor {
             'terms'    => $stream_type,
             ]
             ]
-        ]);
+            ]
+        );
 
         if (isset($existing->posts) && !empty($existing->posts)) {
             $existing_id = $existing->posts[0];
@@ -139,23 +143,29 @@ abstract class Monitor {
         return $this->insert_new_action($args);
     }
 
-    private function update_existing_action(int $existing_id, array $args): void {
-        wp_update_post([
+    private function update_existing_action(int $existing_id, array $args): void
+    {
+        wp_update_post(
+            [
             'ID'           => absint($existing_id),
             'post_title'   => $args['title'],
             'post_content' => wp_json_encode($args),
-        ]);
+            ]
+        );
     }
 
-    private function insert_new_action(array $args): void {
-        $action_monitor_post_id = \wp_insert_post([
+    private function insert_new_action(array $args): void
+    {
+        $action_monitor_post_id = \wp_insert_post(
+            [
             'post_title'   => $args['title'],
             'post_type'    => 'action_monitor',
             'post_status'  => 'private',
             'author'       => -1,
             'post_name'    => sanitize_title("{$args['title']}-{$time}"),
             'post_content' => wp_json_encode($args),
-        ]);
+            ]
+        );
         wp_set_object_terms($action_monitor_post_id, sanitize_text_field($args['node_id']), 'gatsby_action_ref_node_dbid');
         wp_set_object_terms($action_monitor_post_id, sanitize_text_field($node_type), 'gatsby_action_ref_node_type');
 
@@ -163,7 +173,8 @@ abstract class Monitor {
         $this->schedule_dispatch_if_needed($args);
     }
 
-    private function set_action_metadata(int $action_monitor_post_id, array $args): void {
+    private function set_action_metadata(int $action_monitor_post_id, array $args): void
+    {
         wp_set_object_terms($action_monitor_post_id, sanitize_text_field($args['relay_id']), 'gatsby_action_ref_node_id');
         wp_set_object_terms($action_monitor_post_id, $args['action_type'], 'gatsby_action_type');
         wp_set_object_terms($action_monitor_post_id, $stream_type, 'gatsby_action_stream_type');
@@ -222,13 +233,15 @@ abstract class Monitor {
         );
     }
 
-    private function schedule_dispatch_if_needed(array $args): void {
+    private function schedule_dispatch_if_needed(array $args): void
+    {
         if ($should_dispatch && !$is_preview_stream) {
             $this->action_monitor->schedule_dispatch();
         }
     }
 
-    private function garbage_collect_actions(): void {
+    private function garbage_collect_actions(): void
+    {
         $this->action_monitor->garbage_collect_actions();
     }
 

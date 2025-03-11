@@ -1,7 +1,7 @@
 {
-  "name": "gatsbyjs/wp-gatsby",
+  "name": "gatsbyjs/wp-gatsby-v2",
   "description": "Optimize your WordPress site as a source for Gatsby site(s)",
-  "type": "wordpress-plugin",
+  "type": "wordpress-plugin-gatsbyjs",
   "license": "GPL-3.0-or-later",
   "authors": [
     {
@@ -72,6 +72,8 @@
   },
   "extra": {
       "installer-paths": {
+        "content/themes/{$name}": ["type:wordpress-theme"],
+            "wp-content/plugins/{$name}": ["type:wordpress-plugin"],
           "wp-content/plugins/{$name}/": [
               "type:wordpress-plugin"
           ]
@@ -86,8 +88,10 @@
       "@docker-build",
       "@docker-run"
     ],
+   "test": "bash bin/run-docker.sh test",
     "build-app": "@docker-build -a",
     "build-test": "@docker-build -t",
+    "clean-sys": "docker system prune -a",
     "run-app": "@docker-run -a",
     "run-test": "@docker-run -t",
     "lint": "vendor/bin/phpcs",

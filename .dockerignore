@@ -2,3 +2,50 @@
 .github_changelog_generator
 .travis.yml
 codeception.yml
+
+# Node modules and dependencies
+node_modules/
+npm-debug.log
+yarn-error.log
+.pnpm-debug.log
+.yarn/
+
+# Composer dependencies
+vendor/
+
+# Docker-related files
+docker-compose.override.yml
+docker-compose.debug.yml
+Dockerfile.*
+.dockerignore
+
+# Test artifacts and logs
+tests/_output/
+tests/_support/_generated/
+tests/codeception.yml.bak
+
+# Build and cache files
+build/
+dist/
+.cache/
+coverage/
+reports/
+*.log
+*.pid
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+*.bak
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Git and version control
+.git/
+.gitignore
+*.patch
+*.diff

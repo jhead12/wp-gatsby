@@ -5,11 +5,11 @@ namespace WPGatsby\ActionMonitor\Monitors;
 /**
  * Class TaxonomyMonitor
  *
- * @category  ActionMonitor
- * @package   WPGatsby
- * @author    Your Name <your.email@example.com>
- * @license   MIT License
- * @link      https://github.com/yourusername/WPGatsby
+ * @category ActionMonitor
+ * @package  WPGatsby
+ * @author   Your Name <your.email@example.com>
+ * @license  MIT License
+ * @link     https://github.com/yourusername/WPGatsby
  *
  * This class monitors changes in registered taxonomies and triggers a Schema diff
  * if detected.

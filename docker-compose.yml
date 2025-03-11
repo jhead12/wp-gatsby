@@ -50,8 +50,8 @@ services:
     environment:
       XDEBUG_CONFIG: remote_host=host.docker.internal remote_port=9000 remote_enable=1
       DB_HOST: app_db
-      WP_URL: http://localhost
-      WP_DOMAIN: localhost
+      WP_URL: http://localhost:3306
+      WP_DOMAIN: http://localhost:8091
       STRIPE_GATEWAY: 1
       WPGRAPHQL_VERSION: 2.0
     networks:
