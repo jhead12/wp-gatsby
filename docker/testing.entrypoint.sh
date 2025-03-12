@@ -90,20 +90,14 @@ settings:
     bootstrap: _bootstrap.php
     suite_class: \Codeception\Test\Unit
     modules:
-        enabled:
-            - WPLoader:
-                wpRootFolder: "/var/www/html"
-                dbName: "testdb"
-                dbHost: "localhost"
-                dbUser: "root"
-                dbPassword: "wordpress"
-                tablePrefix: "wp_"
-                domain: "localhost"
-                adminEmail: "admin@admin.com"
-                title: "Test"
-                phpBinary: "php"
-                language: ""
-                plugins: []
+    enabled:
+        WPLoader:
+            wpRootFolder: "/var/www"  # Path to WordPress
+            dbName: "wordpress_tests"     # Test database name
+            dbHost: "localhost:3306"      # Database host
+            dbUser: "root"                # Database user
+            dbPassword: "wordpress"       # Database password
+
 EOF
 }
 
@@ -219,6 +213,11 @@ run_tests() {
         /var/www/vendor/bin/codecept run -c /var/www/codeception.dist.yml ${suite} ${coverage} ${debug} --no-exit 2>&1 | tee -a test-results.log
     done
 }
+    # Start Apache in the foreground
+if ! apache2-foreground; then
+    log_error "Failed to start Apache in foreground mode."
+fi
+
 
 # Main Function
 main() {
@@ -235,11 +234,13 @@ main() {
     fi
 
     # Return to working directory
-    cd "${workdir}"
+    cd "/var/www"
     echo "Returned to project working directory."
+       # Start the web server
+    if ! apache2-foreground; then
+        log_error "Failed to start Apache in foreground mode."
+    fi
 
-    # Ensure Apache is running
-    service apache2 start || log_error "Failed to start Apache."
 
     # Install Dockerize and wait for services
     install_dockerize

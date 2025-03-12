@@ -2,55 +2,72 @@
 # Container for running Codeception tests on a WooGraphQL Docker instance. #
 ###############################################################################
 
-FROM php:8.3-apache
+# FROM php:8.3-apache
+FROM wordpress:beta-6.8-php8.3-apache
 
-# Set default values for ARGs if not already set
-ENV DOCKERIZE_VERSION=v0.9.2
+
 LABEL author="Joshua Head"
 LABEL author_uri="https://github.com/jhead12"
 
-# Install system packages
+# Set default values for ARGs if not already set
+ENV DOCKERIZE_VERSION=v0.6.1
+
+# Install system packages and development libraries
 RUN apt-get update && \
-    apt-get -y install git ssh tar gzip wget mariadb-client libpcre3 libpcre3-dev && \
+    apt-get -y install software-properties-common python3-venv python3-pip wget git ssh tar gzip mariadb-client libpcre3 libpcre3-dev unzip \
+    libcurl4-openssl-dev libxml2-dev libzip-dev && \
     rm -rf /var/lib/apt/lists/*
+
+# Add Ondrej's PHP PPA directly
+RUN echo "deb http://ppa.launchpad.net/ondrej/php/ubuntu focal main" > /etc/apt/sources.list.d/ondrej-php.list && \
+    apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E5267A6C && \
+    apt-get update
+
+# Create a virtual environment for Python packages
+RUN python3 -m venv /opt/venv && \
+    . /opt/venv/bin/activate && \
+    pip install --upgrade pip setuptools wheel
+
+# Install PHP extensions using docker-php-ext-install
+RUN docker-php-ext-install mysqli pdo_mysql curl dom simplexml zip && \
+    docker-php-ext-enable mysqli pdo_mysql curl dom simplexml zip
+
+# Check for dependency conflicts
+RUN apt-get check || { echo "Dependency conflicts detected"; exit 1; }
 
 # Install Dockerize
 RUN wget -O - https://github.com/jwilder/dockerize/releases/download/${DOCKERIZE_VERSION}/dockerize-linux-amd64-${DOCKERIZE_VERSION}.tar.gz | tar xzf - -C /usr/local/bin && \
-    chmod +x /usr/local/bin/dockerize
-
-# Verify Dockerize installation
-RUN /usr/local/bin/dockerize --version || { echo "Dockerize installation failed"; exit 1; }
+    chmod +x /usr/local/bin/dockerize && \
+    /usr/local/bin/dockerize --version || { echo "Dockerize installation failed"; exit 1; }
 
 # Install Composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && \
-    chmod +x /usr/local/bin/composer && \
-    composer --version || { echo "Composer installation failed"; exit 1; }
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Install WP-CLI using Composer
 RUN composer global require wp-cli/wp-cli-bundle
 
-# Install pecl and PHP extensions
+# Install additional PHP extensions
 RUN pecl install pcov uopz && \
     docker-php-ext-enable pcov uopz
 
-# Set up working directory for the WordPress plugin
-WORKDIR /var/www/
+# Add GitHub SSH key to known hosts
+RUN mkdir -p ~/.ssh && \
+    ssh-keyscan github.com >> ~/.ssh/known_hosts
 
-# Copy composer.json to the working directory
-COPY docker/composer.json /var/www/composer.json
+# Set up the working directory
+WORKDIR /var/www/html
 
-# Copy Conception codeception.dist.yml
-COPY docker/codeception.yml /var/www/codeception.dist.yml
-
-# Create the tests directory and copy its contents
-COPY tests /var/www/tests
-
-# Install Codeception dependencies and verify installation
-RUN composer install --prefer-source --no-interaction && \
-    if [ ! -f /var/www/vendor/bin/codecept ]; then \
+# Copy composer.json and install dependencies
+COPY composer.json composer.lock ./
+RUN composer install --no-interaction --prefer-source && \
+    if [ ! -f vendor/bin/codecept ]; then \
         echo "Codeception installation failed"; \
         exit 1; \
     fi
+
+# Copy additional configuration and test files
+COPY docker/codeception.yml /var/www/codeception.dist.yml
+COPY tests /var/www/tests
 
 # Remove exec statement from base entrypoint script if it exists
 RUN if [ -f "app-entrypoint.sh" ]; then \
@@ -61,9 +78,12 @@ RUN if [ -f "app-entrypoint.sh" ]; then \
     fi
 
 # Copy testing entrypoint script and make it executable
-COPY docker/testing.entrypoint.sh /usr/local/bin/testing-entrypoint.sh
+# COPY docker/testing.entrypoint.sh /usr/local/bin/testing-entrypoint.sh
 RUN chmod 755 /usr/local/bin/testing-entrypoint.sh
 
+# Expose the web server port
+EXPOSE 80
+
 # Set up Apache
-ENTRYPOINT ["testing-entrypoint.sh"]
+ENTRYPOINT ["testing.entrypoint.sh"]
 CMD ["apache2-foreground"]
