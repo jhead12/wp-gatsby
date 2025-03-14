@@ -69,14 +69,6 @@ RUN composer install --no-interaction --prefer-source && \
 # Create .env file with necessary environment variables
 # RUN echo 'DB_HOST=localhost\nDB_PORT=3306\nDB_USER=root\nDB_PASSWORD=wordpress\nDB_NAME=wordpress_tests\nWP_ROOT_FOLDER=/var/www' > /var/www/tests/.env
 
-# Copy testing configuration files
-COPY tests tests
-COPY docker/codeception.yml codeception.yml
-COPY docker/codeception.dist.yml codeception.dist.yml
-
-# copy .env file
-COPY .env.dist .env.dist
-
 # Set ServerName to avoid warnings
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 

@@ -49,13 +49,31 @@
       "firebase/php-jwt": "^5.2",
       "ircmaxell/random-lib": "^1.2",
       "composer/semver": "^1.5",
-      "symfony/yaml": "^5.4"
+      "symfony/yaml": "^5.4",
+      "wpackagist-plugin/wp-graphql": "^1.9.1",
+      "wpackagist-plugin/wp-graphql-acf": "^0.6.0",
+      "wpackagist-plugin/wp-graphql-cors": "^0.3.0",
+      "wpackagist-plugin/wp-graphql-gutenberg": "^0.5.0",
+      "wpackagist-plugin/wp-graphql-jwt-authentication": "^0.3.0",
+      "wpackagist-plugin/wp-graphql-menus": "^0.3.0",
+      "wpackagist-plugin/wp-graphql-meta-query": "^0.3.0",
+      "wpackagist-plugin/wp-graphql-post-object": "^0.3.0",
+      "wpackagist-plugin/wp-graphql-tax-query": "^0.3.0",
+      "wpackagist-plugin/wp-graphql-term-meta": "^0.3.0",
+      "wpackagist-plugin/wp-graphql-woocommerce": "^0.3.0",
+      "wpackagist-plugin/wp-graphql-yoast-seo": "^0.3.0",
+      "wpackagist-plugin/wp-graphql-graphql-jwt-authentication": "^0.3.0"
     },
     "require-dev": {
       "wp-graphql/wp-graphql-testcase": "^2.0.0",
       "phpunit/phpunit": "9.4.1",
-      "codeception/codeception": "^4.1",
-       "lucatume/wp-browser": "^2.6"
+      "codeception/codeception": "^4.1",  
+      "squizlabs/php_codesniffer": "*",
+      "phpcompatibility/php-compatibility": "*",
+       "lucatume/wp-browser": "^2.6",
+       "codeception/module-asserts": "^1.0",
+       "codeception/module-filesystem": "^1.0",
+       "codeception/module-webdriver": "^1.0"
     }, 
     "extra": {
       "installer-paths": {

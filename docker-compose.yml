@@ -7,6 +7,7 @@ services:
       - .:/var/www/html/wp-content/plugins/wp-gatsby
       - ./.log/app:/var/log/apache2
     environment:
+    
       WP_URL: http://localhost:8091
       WP_DOMAIN: localhost:8091
       DB_HOST: app_db

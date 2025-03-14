@@ -1,5 +1,5 @@
 {
-  "name": "gatsbyjs/wp-gatsby-v2",
+  "name": "gatsbyjs/wp-gatsby",
   "description": "Optimize your WordPress site as a source for Gatsby site(s)",
   "type": "wordpress-plugin-gatsbyjs",
   "license": "GPL-3.0-or-later",
@@ -49,6 +49,7 @@
     "php": "^7.3||^8.0",
     "firebase/php-jwt": "^5.2",
     "ircmaxell/random-lib": "^1.2",
+    "vlucas/phpdotenv": "^5.0",
 
     "composer/semver": "^1.5",
     "symfony/yaml": "^5.4"
@@ -94,6 +95,7 @@
     "clean-sys": "docker system prune -a",
     "run-app": "@docker-run -a",
     "run-test": "@docker-run -t",
+    "run-bash": "docker exec -it",
     "lint": "vendor/bin/phpcs",
     "phpcs-i": [
       "php ./vendor/bin/phpcs -i"

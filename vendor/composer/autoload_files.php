@@ -57,5 +57,5 @@ return array(
     '2a3c2110e8e0295330dc3d11a4cbc4cb' => $vendorDir . '/php-webdriver/webdriver/lib/Exception/TimeoutException.php',
     '41ac945ee97c4f5461ef1c0ccb568262' => $vendorDir . '/lucatume/wp-browser/src/tad/WPBrowser/utils.php',
     'a708c649c455d50aa08b5043a5737509' => $vendorDir . '/lucatume/wp-browser/src/tad/WPBrowser/wp-polyfills.php',
-    '4e23edd6e1b07c3b9dd870e60df10dc2' => $baseDir . '/tests/_data/config.php',
+    '6413a0507de9f277a61292c211ec9a9e' => $baseDir . '/tests/_data/config.php',
 );

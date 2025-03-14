@@ -1,13 +1,70 @@
 #!/bin/bash
 
+# Exit immediately on error, unset variable, or pipe failure.
 set -euo pipefail
 
 # Define necessary variables
 DOCKERIZE_VERSION=v0.9.2
+name="wp-gatsby"
+PROJECT_DIR=/var/www
+WP_ROOT_FOLDER=${WP_ROOT_FOLDER:-/var/www/html/wordpress}
+TESTS_OUTPUT=${TESTS_OUTPUT:-/var/www/tests/_output}
+
+ # Define necessary variables
+COMPOSER_VERSION=2.1.8
 COMPOSER_SETUP_URL="https://getcomposer.org/installer"
 COMPOSER_SIG_URL="https://composer.github.io/installer.sig"
-WP_ROOT_FOLDER=${WP_ROOT_FOLDER:-/var/www/wordpress}
-TESTS_OUTPUT=${TESTS_OUTPUT:-/var/www/tests/_output}
+# Function to install PHP extensions
+install_php_extensions() {
+    echo "Installing PHP extensions..."
+    docker-php-ext-install mysqli pdo_mysql curl dom simplexml zip && \
+    docker-php-ext-enable mysqli pdo_mysql curl dom simplexml zip
+
+    echo "Installing additional PHP extensions..."
+    pecl install pcov uopz && \
+    docker-php-ext-enable pcov uopz
+}
+
+# Function to download c3.php
+download_c3_php() {
+    echo "Downloading c3.php..."
+    curl -sS "https://raw.githubusercontent.com/wp-cli/wp-cli/v2.5.0/utils/wp-cron/cron-runner.php" -o "${PROJECT_DIR}/c3.php"
+}
+
+
+
+
+# Function to install Composer securely
+install_composer() {
+    echo "Downloading Composer installer..."
+    curl -sS "$COMPOSER_SETUP_URL" -o composer-setup.php
+
+    echo "Downloading expected Composer signature..."
+    EXPECTED_SIGNATURE=$(curl -sS "$COMPOSER_SIG_URL")
+
+    echo "Verifying Composer installer signature..."
+    ACTUAL_SIGNATURE=$(php -r "echo hash_file('SHA384', 'composer-setup.php');")
+
+    if [ "$EXPECTED_SIGNATURE" != "$ACTUAL_SIGNATURE" ]; then
+        rm composer-setup.php
+        log_error "Invalid installer checksum"
+    fi
+
+    echo "Checksum verified. Installing Composer..."
+    php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+
+    echo "Cleaning up..."
+    rm composer-setup.php
+
+    echo "Composer installed successfully."
+}
+
+# Function to increase PHP memory limit
+increase_php_memory_limit() {
+    echo "Increasing PHP memory limit..."
+    echo "memory_limit=512M" >> /usr/local/etc/php/conf.d/memory-limit.ini
+}
+
 
 # Function to log errors and exit gracefully
 log_error() {
@@ -15,8 +72,12 @@ log_error() {
     exit 1
 }
 
-# Function to print environment variables for debugging
+# Print environment variables and paths
 print_vars() {
+    echo "PROJECT_DIR: ${PROJECT_DIR}"
+    echo "WP_ROOT_FOLDER: ${WP_ROOT_FOLDER}"
+    echo "TESTS_OUTPUT: ${TESTS_OUTPUT}"
+    echo "DB_HOST: ${DB_HOST}"
     echo "DB_USER: ${DB_USER}"
     echo "DB_PASSWORD: ${DB_PASSWORD}"
     echo "DB_NAME: ${DB_NAME}"
@@ -42,10 +103,6 @@ EOF
 
     # Verify manual creation of wp-config.php
     if [ -f "${WP_ROOT_FOLDER}/wp-config.php" ]; then
-    # Ensure MySQL is running
-dockerize -wait tcp://${DB_HOST}:${DB_HOST_PORT:-3306} -timeout 1m || exit 1
-echo "MySQL service is up and running."
-
         echo "wp-config.php created manually."
     else
         log_error "Failed to create wp-config.php manually."
@@ -73,18 +130,13 @@ install_dockerize() {
     fi
 }
 
-
-# Function to increase PHP memory limit
-increase_php_memory_limit() {
-    echo "Increasing PHP memory limit..."
-    echo "memory_limit=512M" >> /usr/local/etc/php/conf.d/memory-limit.ini
-}
-
 # Set up and install WordPress using WP-CLI
 setup_wordpress() {
     echo "Setting up WordPress using WP-CLI..."
     # Print environment variables
     print_vars
+
+
 
     # Ensure WP_ROOT_FOLDER exists
     if [ ! -d "$WP_ROOT_FOLDER" ]; then
@@ -92,17 +144,10 @@ setup_wordpress() {
         mkdir -p "$WP_ROOT_FOLDER"
     fi
 
-      # Increase PHP memory limit for WordPress installation
-    increase_php_memory_limit
-
     # Navigate to the WordPress root folder
-    cd /var/www/
+    cd /var/www
     echo "Current working directory after cd: $(pwd)"
     # Run WordPress configuration script
-
-    # Ensure MySQL is running
-    dockerize -wait tcp://${DB_HOST}:${DB_HOST_PORT:-3306} -timeout 1m || exit 1
-    echo "MySQL service is up and running."
 
     ./configure-wordpress.sh
 
@@ -111,31 +156,22 @@ setup_wordpress() {
     # List contents to confirm correct path
     echo "Contents of WP_ROOT_FOLDER: $(ls -la)"
 
-    # Verify wp-config.php creation
-    if [ ! -f "${WP_ROOT_FOLDER}/wp-config.php" ]; then
-        create_wp_config
+    # Download WordPress
+    if ! wp core download --path="$WP_ROOT_FOLDER" --allow-root; then
+        log_error "Failed to download WordPress."
     fi
+
+    echo "WordPress downloaded successfully."
+    echo "Contents of WP_ROOT_FOLDER after download: $(ls -la)"
+
 
     echo "wp-config.php created successfully."
-    # echo "Contents of WP_ROOT_FOLDER after config creation: $(ls -la)"
+    echo "Contents of WP_ROOT_FOLDER after config creation: $(ls -la)"
 
-    # # Verify wp-config.php contents
-    # if ! grep -q "DB_NAME" "${WP_ROOT_FOLDER}/wp-config.php"; then
-    #     log_error "wp-config.php does not contain the expected database configuration."
-    # fi
-
-    # Verify wp-config.php permissions
-    if [ "$(stat -c %a "${WP_ROOT_FOLDER}/wp-config.php")" -ne 644 ]; then
-        chmod 644 "${WP_ROOT_FOLDER}/wp-config.php" || log_error "Failed to set permissions for wp-config.php."
+    # Install WordPress
+    if ! wp core install --url="wp.test" --title="WPGatsby Tests" --admin_user="admin" --admin_password="password" --admin_email="dev-email@wpengine.local" --path="$WP_ROOT_FOLDER" --allow-root; then
+        log_error "Failed to install WordPress."
     fi
-
- 
-    # Activate WPGraphQL plugin
-    if ! wp plugin activate wp-graphql --allow-root; then
-        log_error "Failed to activate WPGraphQL plugin."
-    fi
-
-    echo "WordPress and WPGraphQL plugin installed and activated successfully."
 
     echo "WordPress installed successfully."
 }
@@ -152,8 +188,8 @@ clean_coverage_file() {
 # Function to install dependencies
 install_dependencies() {
     echo "Installing dependencies"
-    if [ ! -f /var/www/html/wordpress/composer.json ]; then
-        cat << 'EOF' > /var/www/html/wordpress/composer.json
+    if [ ! -f /var/www/composer.json ]; then
+        cat << 'EOF' > /var/www/composer.json
 {
     "name": "gatsbyjs/wp-gatsby",
     "description": "Optimize your WordPress site as a source for Gatsby site(s)",
@@ -226,22 +262,19 @@ EOF
     COMPOSER_MEMORY_LIMIT=-1 composer update --prefer-source --no-interaction
     COMPOSER_MEMORY_LIMIT=-1 composer install --prefer-source --no-interaction
 
-    # Verify Codeception installation
+      # Verify Codeception installation
     if [ ! -f /var/www/vendor/bin/codecept ]; then
         log_error "Codeception is not installed correctly."
     fi
 }
+
+
 
 # Function to run Codeception tests
 run_tests() {
     echo "Running Tests"
     local coverage=""
     local debug=""
-
-    cd /var/www/tests
-
-    # List contents to confirm correct path
-    echo "Contents of Test Folder: $(ls -la)"
 
     if [[ -n "${COVERAGE:-}" ]]; then
         coverage="--coverage --coverage-xml"
@@ -253,12 +286,17 @@ run_tests() {
     local suites=${1:-" ;"}
     IFS=';' read -ra target_suites <<< "$suites"
     for suite in "${target_suites[@]}"; do
-        /var/www/vendor/bin/codecept run -c /var/www/codeception.dist.yml ${suite} ${coverage} ${debug} --no-exit 2>&1 | tee -a test-results.log
+        /var/www/vendor/bin/codecept run -c /var/www/html/codeception.dist.yml ${suite} ${coverage} ${debug} --no-exit 2>&1 | tee -a test-results.log
     done
 }
 
 # Main Function
 main() {
+    # # Move to WordPress root folder
+    # local workdir="$PWD"
+    # echo "Moving to WordPress root directory."
+    # cd "${WP_ROOT_FOLDER}"
+
     # Run app entry point script if it exists
     if [ -f "app-entrypoint.sh" ]; then
         echo "Running app entrypoint script."
@@ -270,7 +308,7 @@ main() {
     cd "/var/www"
     echo "Returned to project working directory."
 
-    # Set up WordPress
+   # Set up WordPress
     setup_wordpress
 
     # Install Dockerize and wait for services
@@ -281,13 +319,19 @@ main() {
         -timeout 1m || log_error "Dockerize failed to wait for services."
 
     # Download c3.php
-    # download_c3_php
+    download_c3_php
 
     # Create Codeception configuration
-    # create_codeception_config
+    create_codeception_config
 
     # Install dependencies
     install_dependencies
+
+    # Install Composer if missing
+    install_composer
+
+    # Install WP-CLI using Composer
+    # install_wp_cli
 
     # Set output permissions
     if [ -d "${TESTS_OUTPUT}" ]; then
